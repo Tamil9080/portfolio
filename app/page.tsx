@@ -9,6 +9,7 @@ import Footer from '../components/Footer';
 import Background from '../components/Background';
 import GrandEntranceClient from '../components/GrandEntranceClient';
 import ClickSpark from '../components/ClickSpark.jsx';
+import SpiderScroll from '../components/SpiderScroll';
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
       <div className="w-full bg-black text-white selection:bg-cyan-500/40 font-sans">
         <Background />
         <GrandEntranceClient />
+        <SpiderScroll />
 
         <div className="relative z-10">
           <Navbar />
