@@ -3,12 +3,38 @@ import { useScrollReveal } from '@/hooks/useScrollReveal';
 
 export default function Footer() {
   const { ref, isVisible } = useScrollReveal();
+  
   return (
-    <footer ref={ref} className="py-12 text-center">
-       <div className="max-w-4xl mx-auto px-6">
-         <div className="glass rounded-2xl px-6 py-8">
-           <p className={`text-gray-400 text-xs uppercase tracking-widest mb-4 reveal-up stagger-1 ${isVisible ? 'visible' : ''}`}>© 2026 Crafted with Passion</p>
-           <div className={`text-white font-bold text-3xl select-none reveal-up stagger-2 ${isVisible ? 'visible' : ''}`}>Tamil Selvan B S</div>
+    <footer ref={ref} className="py-20 text-center relative overflow-hidden">
+       {/* Background accent */}
+       <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-64 h-64 bg-red-600/5 blur-[100px] rounded-full pointer-events-none -z-10" />
+       
+       <div className="max-w-4xl mx-auto px-6 relative">
+         <div className="p-10 border-t border-white/5 relative group">
+           {/* Section Deco */}
+           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-16 h-[1px] bg-gradient-to-r from-transparent via-cyan-400/50 to-transparent" />
+           
+           <p className={`text-gray-500 text-[10px] font-black uppercase tracking-[0.5em] mb-6 transition-all duration-1000 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
+             Terminal_Closed // Earth_1610_Sync_Success
+           </p>
+           
+           <div className={`transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+             <div className="text-white font-black italic font-[Anton] text-4xl mb-4 tracking-tighter uppercase select-none group-hover:text-red-600 transition-colors">
+               Tamilselvan <span className="text-cyan-400">B S</span>
+             </div>
+             
+             <div className="flex justify-center items-center gap-4 text-[9px] font-mono text-white/20 uppercase tracking-widest">
+               <span>Loc: Chennai_IN</span>
+               <span className="w-1 h-1 rounded-full bg-white/20" />
+               <span>Ver: 2026.1.14</span>
+               <span className="w-1 h-1 rounded-full bg-white/20" />
+               <span className="text-red-500/50 animate-pulse">Connection: Secure</span>
+             </div>
+           </div>
+         </div>
+         
+         <div className="mt-12 text-[8px] font-mono text-white/10 uppercase tracking-[0.4em]">
+           "With great data, comes great insight."
          </div>
        </div>
     </footer>

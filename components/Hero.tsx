@@ -155,19 +155,44 @@ export default function Hero() {
         <p className="text-gray-300 text-base md:text-lg leading-relaxed text-center max-w-2xl mx-auto">
           Bridging dimensions of AI, Data Science, and Web Development to create impactful solutions across the multiverse.
         </p>
+
+        {/* Multiverse Coordinate Badge */}
+        <div className="mt-8 flex justify-center">
+          <div className="px-4 py-1.5 rounded-xl bg-white/5 border border-white/10 flex items-center gap-3 group/coord hover:border-red-500/30 transition-all cursor-crosshair">
+            <div className="flex flex-col items-start leading-none">
+              <span className="text-[8px] font-black text-white/20 uppercase tracking-widest group-hover/coord:text-red-500/50 transition-colors">Coordinate</span>
+              <span className="text-[10px] font-mono text-cyan-400 font-bold tracking-tighter">Lat: 13.0827° N // Lon: 80.2707° E</span>
+            </div>
+            <div className="h-6 w-[1px] bg-white/10" />
+            <div className="text-[10px] font-black text-white/40 uppercase tracking-widest">
+              Universe: <span className="text-white group-hover/coord:text-cyan-400">Earth-616</span>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <div className="flex flex-wrap gap-4 justify-center animate-fade-in" style={{ animationDelay: '0.4s' }}>
+      <div className="flex flex-wrap gap-6 justify-center animate-fade-in relative z-10" style={{ animationDelay: '0.4s' }}>
         <a 
           href="#projects" 
-          className="px-8 py-4 glass text-white rounded-2xl font-black hover:border-cyan-400/60 hover:scale-105 transition-all flex items-center gap-2 group relative overflow-hidden"
+          className="px-10 py-5 bg-gradient-to-r from-red-600 to-blue-600 rounded-2xl font-black text-white hover:scale-110 hover:shadow-[0_0_30px_rgba(230,36,41,0.4)] transition-all flex items-center gap-3 group relative overflow-hidden active:scale-95"
         >
-          <span className="relative z-10">View Missions 🌀</span>
+          <div className="absolute inset-0 bg-white/20 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
+          <span className="relative z-10 uppercase tracking-tighter italic">Enter the Breach</span>
+          <span className="text-xl group-hover:rotate-12 transition-transform">🌀</span>
         </a>
+        
         <div className="flex gap-4">
-          <a href="#" className="p-4 glass rounded-2xl text-gray-400 hover:text-cyan-400 hover:border-cyan-400/40 transition-all"><FaGithub size={20} /></a>
-          <a href="#" className="p-4 glass rounded-2xl text-gray-400 hover:text-cyan-400 hover:border-cyan-400/40 transition-all"><FaLinkedin size={20} /></a>
+          <a href="https://github.com/tamilselvan-bs" target="_blank" className="p-5 bg-white/5 border border-white/10 rounded-2xl text-white hover:text-cyan-400 hover:border-cyan-400/40 hover:-translate-y-1 transition-all group/soc">
+            <FaGithub size={24} className="group-hover/soc:rotate-[360deg] transition-transform duration-500" />
+          </a>
+          <a href="https://linkedin.com/in/tamilselvan-bs" target="_blank" className="p-5 bg-white/5 border border-white/10 rounded-2xl text-white hover:text-blue-500 hover:border-blue-500/40 hover:-translate-y-1 transition-all group/soc">
+            <FaLinkedin size={24} className="group-hover/soc:rotate-[360deg] transition-transform duration-500" />
+          </a>
         </div>
+      </div>
+
+      <div className="mt-20 animate-bounce">
+         <div className="w-1 h-12 rounded-full bg-gradient-to-b from-cyan-400 to-transparent opacity-20 mx-auto" />
       </div>
     </section>
   );
