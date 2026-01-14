@@ -24,9 +24,17 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+  }, [isMenuOpen]);
+
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-500 ease-in-out px-4 py-4 md:px-10 ${isScrolled ? 'py-2' : 'py-6'} hidden md:block`}>
-      <div className={`mx-auto w-full max-w-6xl transition-all duration-500 rounded-2xl flex items-center justify-between px-6 py-2 ${isScrolled ? 'glass border border-white/10 shadow-[0_0_20px_rgba(0,0,0,0.5)] backdrop-blur-lg' : ''}`}>
+    <nav className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-500 ease-in-out px-4 py-4 md:px-10 ${isScrolled ? 'py-2 md:py-2' : 'py-4 md:py-6'}`}>
+      <div className={`mx-auto w-full max-w-6xl transition-all duration-500 rounded-2xl flex items-center justify-between px-6 py-2 ${isScrolled ? 'glass border border-white/10 shadow-[0_0_20px_rgba(0,0,0,0.5)] backdrop-blur-lg' : 'bg-white/5 backdrop-blur-sm md:bg-transparent md:backdrop-blur-none'} relative z-50`}>
         <div className="flex items-center gap-3">
           <div className="relative group">
             <div className="absolute -inset-1 bg-gradient-to-r from-red-600 to-blue-600 rounded-lg blur opacity-25 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
@@ -64,7 +72,7 @@ export default function Navbar() {
       </div>
 
       {/* Mobile Menu Overlay */}
-      <div className={`md:hidden fixed inset-0 bg-black/95 backdrop-blur-[20px] transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] z-[-1] ${isMenuOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
+      <div className={`md:hidden fixed inset-0 bg-black/95 backdrop-blur-[20px] transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] z-40 ${isMenuOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
         <div className={`flex flex-col items-center justify-center h-full gap-6 transition-all duration-700 delay-100 ${isMenuOpen ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
           {navItems.map((item, index) => (
             <a 
