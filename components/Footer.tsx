@@ -19,7 +19,7 @@ export default function Footer() {
            </p>
            
            <div className={`transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-             <div className="text-white font-black italic font-[Anton] text-4xl mb-4 tracking-tighter uppercase select-none group-hover:text-red-600 transition-colors">
+             <div className="text-white font-black italic font-[Anton] text-4xl mb-4 tracking-normal uppercase select-none group-hover:text-red-600 transition-colors drop-shadow-[0_2px_2px_rgba(0,0,0,0.8)]" style={{ WebkitTextStroke: '0.8px black' }}>
                Tamilselvan <span className="text-cyan-400">B S</span>
              </div>
              

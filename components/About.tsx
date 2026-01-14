@@ -32,7 +32,7 @@ export default function About() {
             <div className="absolute top-0 left-0 w-24 h-24 border-t-2 border-l-2 border-red-600/50 rounded-tl-[2.5rem]" />
             <div className="absolute bottom-0 right-0 w-32 h-32 border-b-2 border-r-2 border-blue-600/50 rounded-br-[2.5rem]" />
             
-            <h2 className="text-4xl font-black mb-10 italic font-[Anton] uppercase tracking-tighter">
+            <h2 className="text-4xl font-black mb-10 italic font-[Anton] uppercase tracking-normal drop-shadow-[0_2px_2px_rgba(0,0,0,0.8)] [text-shadow:_2px_2px_0_rgb(0_0_0)]" style={{ WebkitTextStroke: '1px black' }}>
               Origin <span className="text-cyan-400">Story</span>
             </h2>
 
@@ -93,7 +93,7 @@ export default function About() {
           <div className="relative z-10 p-8 h-full flex flex-col justify-between min-h-[400px]">
             <FaGraduationCap size={80} className="absolute top-4 right-4 text-white/5" />
             <div>
-              <h3 className="text-2xl font-black mb-8 italic font-[Anton] uppercase text-white tracking-widest">Education</h3>
+              <h3 className="text-2xl font-black mb-8 italic font-[Anton] uppercase text-white tracking-normal drop-shadow-[0_2px_2px_rgba(0,0,0,0.8)]" style={{ WebkitTextStroke: '0.5px black' }}>Education</h3>
               <div className="space-y-8">
                 <div className="relative pl-4 border-l-2 border-cyan-400/30 group">
                   <div className="absolute -left-[5px] top-1.5 w-2 h-2 rounded-full bg-cyan-400 shadow-[0_0_10px_#22d3ee]" />

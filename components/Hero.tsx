@@ -34,13 +34,6 @@ export default function Hero() {
           <style>{`
             @import url('https://fonts.googleapis.com/css2?family=Anton&family=Plus+Jakarta+Sans:wght@400;700;800&display=swap');
             
-            @keyframes chromaticShift {
-              0%, 100% { transform: translate(0, 0); opacity: 1; }
-              2% { transform: translate(-2px, 1px); opacity: 0.8; }
-              4% { transform: translate(2px, -1px); opacity: 0.8; }
-              6% { transform: translate(0, 0); opacity: 1; }
-            }
-
             @keyframes subtleFloat {
               0%, 100% { transform: translateY(0); }
               50% { transform: translateY(-5px); }
@@ -57,39 +50,8 @@ export default function Hero() {
               letter-spacing: -0.02em;
               -webkit-font-smoothing: antialiased;
               text-rendering: optimizeLegibility;
-              /* Classic 3D comic depth */
-              text-shadow: 
-                1px 1px 0px #000,
-                2px 2px 0px #000,
-                3px 3px 0px #000,
-                4px 4px 0px #000,
-                5px 5px 15px rgba(0,0,0,0.4);
-            }
-
-            .high-quality-name::before,
-            .high-quality-name::after {
-              content: "TAMILSELVAN";
-              position: absolute;
-              top: 0;
-              left: 0;
-              width: 100%;
-              height: 100%;
-              z-index: -1;
-              pointer-events: none;
-            }
-
-            /* Red distortion layer */
-            .high-quality-name::before {
-              color: rgba(230, 36, 41, 0.5);
-              animation: chromaticShift 3s infinite linear;
-              left: -3px;
-            }
-
-            /* Blue distortion layer */
-            .high-quality-name::after {
-              color: rgba(0, 102, 255, 0.5);
-              animation: chromaticShift 3s infinite linear reverse;
-              left: 3px;
+              /* Clean 3D shadow for depth without stroke */
+              text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
             }
             
             .greeting-text {

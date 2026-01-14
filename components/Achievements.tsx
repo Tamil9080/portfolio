@@ -33,7 +33,7 @@ export default function Achievements() {
     <section ref={ref} id="achievements" className="py-32 px-6 max-w-7xl mx-auto relative">
       <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8">
         <div className={`transition-all duration-1000 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'}`}>
-          <h2 className="text-5xl font-black italic font-[Anton] uppercase tracking-tighter">
+          <h2 className="text-5xl font-black italic font-[Anton] uppercase tracking-normal drop-shadow-[0_2px_2px_rgba(0,0,0,0.8)]" style={{ WebkitTextStroke: '1px black' }}>
             Multiverse <span className="text-cyan-400">Highlights</span>
           </h2>
           <div className="flex items-center gap-3 mt-4">

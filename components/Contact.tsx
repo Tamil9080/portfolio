@@ -15,7 +15,7 @@ export default function Contact() {
             Incoming_Transmission // Port_8080
           </div>
           
-          <h2 className="text-5xl md:text-7xl font-black mb-8 italic font-[Anton] uppercase tracking-tighter leading-none">
+          <h2 className="text-5xl md:text-7xl font-black mb-8 italic font-[Anton] uppercase tracking-normal leading-none drop-shadow-[0_2px_2px_rgba(0,0,0,0.8)]" style={{ WebkitTextStroke: '1.5px black' }}>
             Signal the <span className="text-cyan-400">Spider</span>
           </h2>
           
