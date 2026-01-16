@@ -4,36 +4,40 @@ import { useScrollReveal } from '@/hooks/useScrollReveal';
 
 const projects = [
   {
-    title: "AI Chatbot System",
-    description: "Intelligent conversational AI using NLP and machine learning for customer support automation.",
-    tech: ["Python", "TensorFlow", "FastAPI"],
+    title: "Portfolio Website",
+    description: "A modern personal portfolio showcasing my projects, skills, and experience.",
+    tech: ["Next.js", "React", "Tailwind CSS"],
     code: "MISSIONS_01",
     color: "group-hover:text-red-500",
-    border: "border-red-600/30"
+    border: "border-red-600/30",
+    github: "https://github.com/Tamil9080"
   },
   {
-    title: "Stock Price Predictor",
-    description: "LSTM-based deep learning model for predicting stock market trends with high precision.",
-    tech: ["Keras", "Pandas", "Streamlit"],
+    title: "Attendance App",
+    description: "A JavaScript application for managing and tracking attendance.",
+    tech: ["JavaScript", "HTML5", "CSS3"],
     code: "MISSIONS_02",
     color: "group-hover:text-cyan-400",
-    border: "border-cyan-400/30"
+    border: "border-cyan-400/30",
+    github: "https://github.com/Tamil9080"
   },
   {
-    title: "Image Classification",
-    description: "CNN model for multi-class image classification with real-time inference capabilities.",
-    tech: ["PyTorch", "OpenCV", "Flask"],
+    title: "Trip Agent",
+    description: "A Python project for handling basic trip planning and travel logic.",
+    tech: ["Python", "Travel Logic", "API Integration"],
     code: "MISSIONS_03",
     color: "group-hover:text-blue-500",
-    border: "border-blue-600/30"
+    border: "border-blue-600/30",
+    github: "https://github.com/Tamil9080"
   },
   {
-    title: "Data Analytics HUD",
-    description: "Interactive dashboard for visualizing complex datasets with ML-powered insights.",
-    tech: ["Plotly", "Scikit-learn", "MongoDB"],
-    code: "MISSIONS_04",
+    title: "Quick Pick",
+    description: "Upcoming Mission: A specialized tool currently under development for rapid selection logic.",
+    tech: ["Upcoming", "In Development"],
+    code: "UPCOMING_MISSION",
     color: "group-hover:text-purple-500",
-    border: "border-purple-600/30"
+    border: "border-purple-600/30",
+    github: "https://github.com/Tamil9080"
   }
 ];
 
@@ -92,14 +96,19 @@ export default function Projects() {
 
                 {/* Buttons */}
                 <div className="flex gap-3 relative z-10">
-                  <a href="#" className="flex-1 py-3 px-4 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center gap-2 hover:bg-white/10 transition-all active:scale-95 group/btn">
+                  <a 
+                    href={project.github} 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="flex-1 py-3 px-4 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center gap-2 hover:bg-white/10 transition-all active:scale-95 group/btn"
+                  >
                     <FaGithub className="text-white group-hover/btn:text-cyan-400 transition-colors" />
                     <span className="text-[10px] font-black tracking-widest text-white">REPOS</span>
                   </a>
-                  <a href="#" className="flex-1 py-3 px-4 rounded-2xl bg-gradient-to-r from-red-600/20 to-blue-600/20 border border-white/10 flex items-center justify-center gap-2 hover:from-red-600/40 hover:to-blue-600/40 transition-all active:scale-95 group/btn">
-                    <FaExternalLinkAlt size={12} className="text-white group-hover/btn:text-cyan-400 transition-colors" />
-                    <span className="text-[10px] font-black tracking-widest text-white">LIVE</span>
-                  </a>
+                  <div className="flex-1 py-3 px-4 rounded-2xl bg-gradient-to-r from-red-600/10 to-blue-600/10 border border-white/5 flex items-center justify-center gap-2 opacity-50 cursor-not-allowed">
+                    <FaExternalLinkAlt size={12} className="text-white/30" />
+                    <span className="text-[10px] font-black tracking-widest text-white/30">NO LIVE</span>
+                  </div>
                 </div>
               </div>
             </div>

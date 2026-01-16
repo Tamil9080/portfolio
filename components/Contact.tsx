@@ -24,7 +24,7 @@ export default function Contact() {
           </p>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <a href="mailto:bs.tamilselvan.offcl@gmail.com" className="group relative p-8 bg-white/5 border border-white/10 rounded-[2rem] hover:bg-white/10 transition-all hover:border-red-600/30">
+            <a href="mailto:bstamilselvanofficial@gmail.com" className="group relative p-8 bg-white/5 border border-white/10 rounded-[2rem] hover:bg-white/10 transition-all hover:border-red-600/30">
                <div className="absolute inset-0 bg-red-600/5 opacity-0 group-hover:opacity-100 transition-opacity rounded-[2rem]" />
                <FaEnvelope size={28} className="mx-auto text-red-500 mb-4 group-hover:scale-110 transition-transform" />
                <p className="text-[10px] font-black text-white/30 uppercase tracking-widest mb-1">Email</p>
@@ -38,7 +38,7 @@ export default function Contact() {
                <p className="text-sm font-bold text-white group-hover:text-cyan-400 transition-colors">LinkedIn</p>
             </a>
             
-            <a href="https://github.com/tamilselvan-bs" target="_blank" rel="noopener noreferrer" className="group relative p-8 bg-white/5 border border-white/10 rounded-[2rem] hover:bg-white/10 transition-all hover:border-cyan-400/30">
+            <a href="https://github.com/Tamil9080" target="_blank" rel="noopener noreferrer" className="group relative p-8 bg-white/5 border border-white/10 rounded-[2rem] hover:bg-white/10 transition-all hover:border-cyan-400/30">
                <div className="absolute inset-0 bg-cyan-400/5 opacity-0 group-hover:opacity-100 transition-opacity rounded-[2rem]" />
                <FaGithub size={28} className="mx-auto text-white mb-4 group-hover:scale-110 transition-transform" />
                <p className="text-[10px] font-black text-white/30 uppercase tracking-widest mb-1">Source</p>

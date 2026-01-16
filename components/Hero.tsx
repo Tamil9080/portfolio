@@ -144,7 +144,7 @@ export default function Hero() {
         </a>
         
         <div className="flex gap-4">
-          <a href="https://github.com/tamilselvan-bs" target="_blank" className="p-5 bg-white/5 border border-white/10 rounded-2xl text-white hover:text-cyan-400 hover:border-cyan-400/40 hover:-translate-y-1 transition-all group/soc">
+          <a href="https://github.com/Tamil9080" target="_blank" className="p-5 bg-white/5 border border-white/10 rounded-2xl text-white hover:text-cyan-400 hover:border-cyan-400/40 hover:-translate-y-1 transition-all group/soc">
             <FaGithub size={24} className="group-hover/soc:rotate-[360deg] transition-transform duration-500" />
           </a>
           <a href="https://linkedin.com/in/tamilselvan-bs" target="_blank" className="p-5 bg-white/5 border border-white/10 rounded-2xl text-white hover:text-blue-500 hover:border-blue-500/40 hover:-translate-y-1 transition-all group/soc">

@@ -50,6 +50,7 @@ const SpiderScroll = () => {
   };
 
   const getActionLabel = () => {
+    if (typeof window === 'undefined') return 'Dive In';
     if (window.scrollY < 300) return 'Dive In';
     return direction === 'up' ? 'Swing Up' : 'Keep Going';
   };
