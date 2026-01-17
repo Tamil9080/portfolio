@@ -1,48 +1,136 @@
 'use client';
-import { FaEnvelope, FaLinkedin, FaGithub } from 'react-icons/fa';
+import { useState } from 'react';
+import { FaLinkedin, FaGithub, FaPaperPlane, FaInstagram, FaSpider } from 'react-icons/fa';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 
 export default function Contact() {
   const { ref, isVisible } = useScrollReveal();
+  const [formState, setFormState] = useState({ name: '', email: '', message: '' });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    
+    try {
+      // Formspree Integration
+      const response = await fetch("https://formspree.io/f/mlgggrqy", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify(formState),
+      });
+
+      if (response.ok) {
+        alert('Transmission Received! Port 8080 secure.');
+        setFormState({ name: '', email: '', message: '' });
+      } else {
+        alert('Transmission Interrupted. Check your uplink (Formspree ID).');
+      }
+    } catch (error) {
+      alert('Neural link failed. Critical system error.');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
   
   return (
     <section ref={ref} id="contact" className="py-32 px-6 max-w-5xl mx-auto relative">
-      <div className={`transition-all duration-1000 ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'} p-[1px] rounded-[3rem] bg-gradient-to-br from-red-600/20 via-white/5 to-cyan-400/20 relative group overflow-hidden`}>
+      <div className={`transition-all duration-1000 ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'} p-[1px] rounded-[3rem] bg-gradient-to-br from-red-600/20 via-white/5 to-cyan-400/20 relative group overflow-hidden shadow-2xl`}>
         <div className="absolute inset-0 bg-[#0a0a0c] rounded-[2.9rem] m-[1px]" />
         
-        <div className="relative z-10 p-12 md:p-20 text-center">
-          <div className="absolute top-8 left-12 font-mono text-[9px] text-red-500/40 uppercase tracking-[0.4em] hidden md:block">
-            Incoming_Transmission // Port_8080
+        <div className="relative z-10 p-8 md:p-20">
+          <div className="text-center mb-16">
+            <div className="font-mono text-[9px] text-red-500/40 uppercase tracking-[0.4em] mb-4">
+              Incoming_Transmission // Port_8080
+            </div>
+            
+            <h2 className="text-5xl md:text-7xl font-black mb-6 italic font-[Anton] uppercase tracking-normal leading-none drop-shadow-[0_2px_2px_rgba(0,0,0,0.8)]" style={{ WebkitTextStroke: '1.5px black' }}>
+              Signal the <span className="text-cyan-400">Spider</span>
+              <FaSpider className="inline-block ml-4 text-red-600 animate-pulse text-4xl md:text-6xl" />
+            </h2>
+            
+            <p className="text-gray-400 text-lg max-w-2xl mx-auto font-medium">
+              Ready to jump through the next portal? Send a tactical transmission below.
+            </p>
           </div>
-          
-          <h2 className="text-5xl md:text-7xl font-black mb-8 italic font-[Anton] uppercase tracking-normal leading-none drop-shadow-[0_2px_2px_rgba(0,0,0,0.8)]" style={{ WebkitTextStroke: '1.5px black' }}>
-            Signal the <span className="text-cyan-400">Spider</span>
-          </h2>
-          
-          <p className="text-gray-400 text-lg mb-16 max-w-2xl mx-auto font-medium">
-            Ready to jump through the next portal? I'm always open to discussing new projects, tactical ideas or opportunities to be part of your vision.
-          </p>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <a href="mailto:bstamilselvanofficial@gmail.com" className="group relative p-8 bg-white/5 border border-white/10 rounded-[2rem] hover:bg-white/10 transition-all hover:border-red-600/30">
-               <div className="absolute inset-0 bg-red-600/5 opacity-0 group-hover:opacity-100 transition-opacity rounded-[2rem]" />
-               <FaEnvelope size={28} className="mx-auto text-red-500 mb-4 group-hover:scale-110 transition-transform" />
-               <p className="text-[10px] font-black text-white/30 uppercase tracking-widest mb-1">Email</p>
-               <p className="text-sm font-bold text-white group-hover:text-cyan-400 transition-colors">Direct Link</p>
-            </a>
+
+          <form onSubmit={handleSubmit} className="max-w-2xl mx-auto mb-20 space-y-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="space-y-2">
+                <label className="text-[10px] font-black text-white/30 uppercase tracking-widest ml-4">Codename_</label>
+                <input 
+                  type="text" 
+                  placeholder="Your Name"
+                  required
+                  value={formState.name}
+                  onChange={(e) => setFormState({...formState, name: e.target.value})}
+                  className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white placeholder:text-white/10 focus:outline-none focus:border-cyan-400/50 transition-all font-bold"
+                />
+              </div>
+              <div className="space-y-2">
+                <label className="text-[10px] font-black text-white/30 uppercase tracking-widest ml-4">Comms_Channel_</label>
+                <input 
+                  type="email" 
+                  placeholder="Your Email"
+                  required
+                  value={formState.email}
+                  onChange={(e) => setFormState({...formState, email: e.target.value})}
+                  className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white placeholder:text-white/10 focus:outline-none focus:border-red-600/50 transition-all font-bold"
+                />
+              </div>
+            </div>
+            <div className="space-y-2">
+              <label className="text-[10px] font-black text-white/30 uppercase tracking-widest ml-4">Data_Payload_</label>
+              <textarea 
+                placeholder="Message Details..."
+                rows={4}
+                required
+                value={formState.message}
+                onChange={(e) => setFormState({...formState, message: e.target.value})}
+                className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white placeholder:text-white/10 focus:outline-none focus:border-cyan-400/50 transition-all font-bold resize-none"
+              />
+            </div>
             
-            <a href="https://linkedin.com/in/tamilselvan-bs" target="_blank" rel="noopener noreferrer" className="group relative p-8 bg-white/5 border border-white/10 rounded-[2rem] hover:bg-white/10 transition-all hover:border-blue-600/30">
-               <div className="absolute inset-0 bg-blue-600/5 opacity-0 group-hover:opacity-100 transition-opacity rounded-[2rem]" />
-               <FaLinkedin size={28} className="mx-auto text-blue-500 mb-4 group-hover:scale-110 transition-transform" />
-               <p className="text-[10px] font-black text-white/30 uppercase tracking-widest mb-1">Network</p>
-               <p className="text-sm font-bold text-white group-hover:text-cyan-400 transition-colors">LinkedIn</p>
+            <button 
+              type="submit"
+              disabled={isSubmitting}
+              className="w-full py-5 bg-gradient-to-r from-red-600 to-red-800 rounded-2xl text-[10px] font-black uppercase tracking-[0.3em] overflow-hidden relative group/btn disabled:opacity-50"
+            >
+              <div className="absolute inset-0 bg-cyan-400 translate-y-full group-hover/btn:translate-y-0 transition-transform duration-500" />
+              <span className="relative z-10 flex items-center justify-center gap-3 group-hover/btn:text-black transition-colors">
+                {isSubmitting ? 'Processing_Signal...' : (
+                  <>
+                    <FaPaperPlane size={14} />
+                    Initiate_Transmission
+                  </>
+                )}
+              </span>
+            </button>
+          </form>
+          
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-6 mt-12">
+            <a href="https://github.com/Tamil9080" target="_blank" rel="noopener noreferrer" className="group relative p-6 md:p-8 bg-white/5 border border-white/10 rounded-[2rem] hover:bg-white/10 transition-all hover:border-cyan-400/50 shadow-[0_0_0_rgba(34,211,238,0)] hover:shadow-[0_0_20px_rgba(34,211,238,0.2)] text-center">
+               <div className="absolute top-2 right-4 text-[7px] font-black text-white/5 uppercase tracking-[0.2em] group-hover:text-cyan-400/40">NODE_01</div>
+               <FaGithub size={28} className="mx-auto text-white mb-4 group-hover:scale-110 transition-transform group-hover:rotate-12" />
+               <p className="text-[9px] font-black text-white/30 uppercase tracking-widest mb-1">Source_Code</p>
+               <p className="text-xs font-bold text-white group-hover:text-cyan-400 transition-colors">GitHub</p>
             </a>
-            
-            <a href="https://github.com/Tamil9080" target="_blank" rel="noopener noreferrer" className="group relative p-8 bg-white/5 border border-white/10 rounded-[2rem] hover:bg-white/10 transition-all hover:border-cyan-400/30">
-               <div className="absolute inset-0 bg-cyan-400/5 opacity-0 group-hover:opacity-100 transition-opacity rounded-[2rem]" />
-               <FaGithub size={28} className="mx-auto text-white mb-4 group-hover:scale-110 transition-transform" />
-               <p className="text-[10px] font-black text-white/30 uppercase tracking-widest mb-1">Source</p>
-               <p className="text-sm font-bold text-white group-hover:text-cyan-400 transition-colors">GitHub</p>
+
+            <a href="https://www.linkedin.com/in/tamil-selvan-301024294/" target="_blank" rel="noopener noreferrer" className="group relative p-6 md:p-8 bg-white/5 border border-white/10 rounded-[2rem] hover:bg-white/10 transition-all hover:border-blue-600/50 shadow-[0_0_0_rgba(37,99,235,0)] hover:shadow-[0_0_20px_rgba(37,99,235,0.2)] text-center">
+               <div className="absolute top-2 right-4 text-[7px] font-black text-white/5 uppercase tracking-[0.2em] group-hover:text-blue-600/40">NODE_02</div>
+               <FaLinkedin size={28} className="mx-auto text-blue-500 mb-4 group-hover:scale-110 transition-transform group-hover:-rotate-12" />
+               <p className="text-[9px] font-black text-white/30 uppercase tracking-widest mb-1">Cyber_Pulse</p>
+               <p className="text-xs font-bold text-white group-hover:text-cyan-400 transition-colors">LinkedIn</p>
+            </a>
+
+            <a href="https://www.instagram.com/tamilselvan_30/" target="_blank" rel="noopener noreferrer" className="group relative p-6 md:p-8 bg-white/5 border border-white/10 rounded-[2rem] hover:bg-white/10 transition-all hover:border-red-600/50 shadow-[0_0_0_rgba(220,38,38,0)] hover:shadow-[0_0_20px_rgba(220,38,38,0.2)] text-center">
+               <div className="absolute top-2 right-4 text-[7px] font-black text-white/5 uppercase tracking-[0.2em] group-hover:text-red-600/40">NODE_03</div>
+               <FaInstagram size={28} className="mx-auto text-pink-500 mb-4 group-hover:scale-110 transition-transform group-hover:rotate-12" />
+               <p className="text-[9px] font-black text-white/30 uppercase tracking-widest mb-1">Visual_Logs</p>
+               <p className="text-xs font-bold text-white group-hover:text-cyan-400 transition-colors">Instagram</p>
             </a>
           </div>
           

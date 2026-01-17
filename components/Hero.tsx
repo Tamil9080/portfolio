@@ -2,6 +2,7 @@
 
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import { useState, useEffect } from 'react';
+import Link from 'next/link';
 
 export default function Hero() {
   const [titleIndex, setTitleIndex] = useState(0);
@@ -142,12 +143,21 @@ export default function Hero() {
           <span className="relative z-10 uppercase tracking-tighter italic">Enter the Breach</span>
           <span className="text-xl group-hover:rotate-12 transition-transform">🌀</span>
         </a>
+
+        <Link 
+          href="/contact" 
+          className="px-10 py-5 bg-white/5 border border-white/10 rounded-2xl font-black text-white hover:border-cyan-400 hover:text-cyan-400 hover:scale-105 transition-all flex items-center gap-3 group relative overflow-hidden active:scale-95"
+        >
+          <div className="absolute inset-0 bg-cyan-400/5 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
+          <span className="relative z-10 uppercase tracking-tighter italic">Signal the Spider</span>
+          <span className="text-xl group-hover:animate-pulse transition-transform">🕷️</span>
+        </Link>
         
         <div className="flex gap-4">
           <a href="https://github.com/Tamil9080" target="_blank" className="p-5 bg-white/5 border border-white/10 rounded-2xl text-white hover:text-cyan-400 hover:border-cyan-400/40 hover:-translate-y-1 transition-all group/soc">
             <FaGithub size={24} className="group-hover/soc:rotate-[360deg] transition-transform duration-500" />
           </a>
-          <a href="https://linkedin.com/in/tamilselvan-bs" target="_blank" className="p-5 bg-white/5 border border-white/10 rounded-2xl text-white hover:text-blue-500 hover:border-blue-500/40 hover:-translate-y-1 transition-all group/soc">
+          <a href="https://www.linkedin.com/in/tamil-selvan-301024294/" target="_blank" className="p-5 bg-white/5 border border-white/10 rounded-2xl text-white hover:text-blue-500 hover:border-blue-500/40 hover:-translate-y-1 transition-all group/soc">
             <FaLinkedin size={24} className="group-hover/soc:rotate-[360deg] transition-transform duration-500" />
           </a>
         </div>

@@ -2,10 +2,30 @@
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 
 const skillsCategories = {
-  "Core Systems": ["Python", "JavaScript", "SQL", "Java", "C++"],
-  "Inter-Web": ["React", "Next.js", "Node.js", "FastAPI", "Flask"],
-  "Neural Nets": ["TensorFlow", "PyTorch", "Scikit-learn", "Keras", "OpenCV"],
-  "Fabrication": ["Git", "Docker", "MongoDB", "PostgreSQL", "AWS"]
+  "Core Systems": [
+    { name: "Python", level: 60 },
+    { name: "JavaScript", level: 50 },
+    { name: "SQL", level: 40 },
+    { name: "Java", level: 40 },
+    { name: "C++", level: 30 }
+  ],
+  "Inter-Web": [
+    { name: "React", level: 50 },
+    { name: "Next.js", level: 50 },
+    { name: "Node.js", level: 60 },
+    { name: "FastAPI", level: 70 },
+  ],
+  "Neural Nets": [
+    { name: "TensorFlow", level: 55 },
+    { name: "PyTorch", level: 50 },
+    { name: "OpenCV", level: 40 }
+  ],
+  "Fabrication": [
+    { name: "Git", level: 85 },
+    { name: "MongoDB", level: 60 },
+    {name:"Vscode", level: 90},
+    { name: "AWS", level: 35 }
+  ]
 };
 
 export default function Skills() {
@@ -43,10 +63,20 @@ export default function Skills() {
                   <ul className="space-y-4">
                     {skills.map((skill, si) => (
                       <li key={si} className="group/skill flex items-center justify-between text-gray-400 hover:text-white transition-colors">
-                        <span className="text-sm font-bold tracking-tight">{skill}</span>
-                        <div className="flex gap-0.5">
-                           {[1, 2, 3, 4].map((dot) => (
-                             <div key={dot} className={`w-1 h-1 rounded-full ${dot <= 3 ? 'bg-cyan-500/50 group-hover/skill:bg-cyan-400' : 'bg-white/10'} transition-all`} />
+                        <div className="flex flex-col">
+                          <span className="text-sm font-bold tracking-tight">{skill.name}</span>
+                          <span className="text-[8px] font-mono text-cyan-400/50 uppercase">{skill.level}% Sync</span>
+                        </div>
+                        <div className="flex gap-1">
+                           {[20, 40, 60, 80, 100].map((threshold) => (
+                             <div 
+                               key={threshold} 
+                               className={`w-1.5 h-1.5 rounded-sm rotate-45 transition-all duration-500 ${
+                                 skill.level >= threshold 
+                                   ? 'bg-cyan-400 shadow-[0_0_8px_rgba(34,211,238,0.6)]' 
+                                   : 'bg-white/10'
+                               }`} 
+                             />
                            ))}
                         </div>
                       </li>
@@ -55,7 +85,10 @@ export default function Skills() {
 
                   <div className="mt-8 pt-4 border-t border-white/5">
                      <div className="w-full h-1 bg-white/5 rounded-full overflow-hidden">
-                        <div className="h-full bg-gradient-to-r from-red-600 to-blue-600 w-[70%] group-hover:w-[90%] transition-all duration-1000" />
+                        <div 
+                          className="h-full bg-gradient-to-r from-red-600 to-blue-600 transition-all duration-1000"
+                          style={{ width: `${skills.reduce((acc, curr) => acc + curr.level, 0) / skills.length}%` }} 
+                        />
                      </div>
                   </div>
                 </div>

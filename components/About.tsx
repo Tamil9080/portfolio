@@ -25,7 +25,7 @@ export default function About() {
             <div className="absolute top-8 right-12 text-[9px] font-mono text-white/20 uppercase tracking-[0.3em] flex flex-col items-end gap-1 text-right">
               <span className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-red-600 animate-ping"></span> Data Stream: Active</span>
               <span>Universe: Earth-1610</span>
-              <span className="text-cyan-400">Target Identity: Miles Morales Affinity</span>
+              <span className="text-cyan-400">Target Identity: Tamil Selvan Affinity</span>
               <span className="text-[7px] text-white/10 mt-1">LATENCY: 12ms // STABLE</span>
             </div>
 

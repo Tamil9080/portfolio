@@ -4,7 +4,6 @@ import About from '../components/About';
 import Projects from '../components/Projects';
 import Skills from '../components/Skills';
 import Achievements from '../components/Achievements';
-import Contact from '../components/Contact';
 import Footer from '../components/Footer';
 import Background from '../components/Background';
 import GrandEntranceClient from '../components/GrandEntranceClient';
@@ -27,7 +26,6 @@ export default function Home() {
             <Projects />
             <Skills />
             <Achievements />
-            <Contact />
             <Footer />
           </div>
         </div>

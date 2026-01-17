@@ -2,13 +2,14 @@
 import GooeyNav from './GooeyNav.jsx';
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
+import Link from 'next/link';
 
 const navItems = [
-  { label: "Home", href: "#home" },
-  { label: "About", href: "#about" },
-  { label: "Projects", href: "#projects" },
-  { label: "Skills", href: "#skills" },
-  { label: "Contact", href: "#contact" },
+  { label: "Home", href: "/" },
+  { label: "About", href: "/#about" },
+  { label: "Projects", href: "/#projects" },
+  { label: "Skills", href: "/#skills" },
+  { label: "Contact", href: "/contact" },
 ];
 
 export default function Navbar() {
@@ -75,7 +76,7 @@ export default function Navbar() {
       <div className={`md:hidden fixed inset-0 bg-black/95 backdrop-blur-[20px] transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] z-40 ${isMenuOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
         <div className={`flex flex-col items-center justify-center h-full gap-6 transition-all duration-700 delay-100 ${isMenuOpen ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
           {navItems.map((item, index) => (
-            <a 
+            <Link 
               key={item.label}
               href={item.href}
               className="group relative px-8 py-2 overflow-hidden"
@@ -86,7 +87,7 @@ export default function Navbar() {
               <span className="text-3xl font-black text-white group-hover:text-cyan-400 transition-colors tracking-tighter uppercase">
                 {item.label}
               </span>
-            </a>
+            </Link>
           ))}
           <a 
             href="#" 

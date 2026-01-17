@@ -10,7 +10,7 @@ const projects = [
     code: "MISSIONS_01",
     color: "group-hover:text-red-500",
     border: "border-red-600/30",
-    github: "https://github.com/Tamil9080"
+    github: "https://github.com/Tamil9080/portfolio"
   },
   {
     title: "Attendance App",
@@ -19,7 +19,7 @@ const projects = [
     code: "MISSIONS_02",
     color: "group-hover:text-cyan-400",
     border: "border-cyan-400/30",
-    github: "https://github.com/Tamil9080"
+    github: "https://github.com/Tamil9080/attendance-app"
   },
   {
     title: "Trip Agent",
@@ -28,7 +28,7 @@ const projects = [
     code: "MISSIONS_03",
     color: "group-hover:text-blue-500",
     border: "border-blue-600/30",
-    github: "https://github.com/Tamil9080"
+    github: "https://github.com/Tamil9080/trip-agent"
   },
   {
     title: "Quick Pick",

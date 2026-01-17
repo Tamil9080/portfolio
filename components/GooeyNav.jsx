@@ -1,5 +1,6 @@
 "use client";
 import { useRef, useEffect, useState } from 'react';
+import Link from 'next/link';
 import './GooeyNav.css';
 
 const GooeyNav = ({
@@ -173,7 +174,15 @@ const GooeyNav = ({
   useEffect(() => {
     if (!enableScrollSpy) return;
     const sectionMap = items
-      .map((it, idx) => ({ idx, selector: it.href?.startsWith('#') ? it.href : null }))
+      .map((it, idx) => {
+        let selector = null;
+        if (it.href?.startsWith('#')) {
+          selector = it.href;
+        } else if (it.href?.startsWith('/#')) {
+          selector = it.href.substring(1);
+        }
+        return { idx, selector };
+      })
       .filter(s => !!s.selector)
       .map(s => ({ ...s, el: document.querySelector(s.selector) }));
 
@@ -256,9 +265,9 @@ const GooeyNav = ({
         <ul ref={navRef}>
           {items.map((item, index) => (
             <li key={index} className={activeIndex === index ? 'active' : ''}>
-              <a href={item.href} onClick={e => handleClick(e, index)} onKeyDown={e => handleKeyDown(e, index)}>
+              <Link href={item.href} onClick={e => handleClick(e, index)} onKeyDown={e => handleKeyDown(e, index)}>
                 {item.label}
-              </a>
+              </Link>
             </li>
           ))}
         </ul>
