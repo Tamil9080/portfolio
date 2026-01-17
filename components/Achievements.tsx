@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { FaTrophy, FaMedal, FaCertificate } from 'react-icons/fa';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 

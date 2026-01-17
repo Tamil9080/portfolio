@@ -3,6 +3,7 @@ import GooeyNav from './GooeyNav.jsx';
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 const navItems = [
   { label: "Home", href: "#home" },
@@ -40,7 +41,13 @@ export default function Navbar() {
         <div className="flex items-center gap-3">
           <div className="relative group">
             <div className="absolute -inset-1 bg-gradient-to-r from-red-600 to-blue-600 rounded-lg blur opacity-25 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
-            <img src="/logo.png" alt="Logo" className="relative w-8 h-8 object-contain rounded-lg border border-white/10" />
+            <Image 
+              src="/logo.png" 
+              alt="Logo" 
+              width={32} 
+              height={32} 
+              className="relative w-8 h-8 object-contain rounded-lg border border-white/10" 
+            />
           </div>
           <div className="flex flex-col">
             <span className="text-xs font-black tracking-tighter text-white">TAMILSELVAN B S</span>

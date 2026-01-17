@@ -66,11 +66,11 @@ export default function ClickSpark({
                 key={i}
                 className="block absolute"
                 style={{
-                  width: sparkSize,
-                  height: sparkSize,
-                  borderRadius: sparkSize / 2,
+                  width: "2px",
+                  height: sparkSize * 1.5,
                   background: sparkColor,
-                  boxShadow: `0 0 ${Math.max(6, sparkSize)}px rgba(255,255,255,0.6)`,
+                  boxShadow: `0 0 8px ${sparkColor}`,
+                  borderRadius: "1px",
                   transform: `translate(-50%, -50%) rotate(${finalAngle}deg)`,
                   animation: `clickSparkParticle ${duration}ms ${easing} forwards`,
                   ["--angle" as any]: `${finalAngle}deg`,

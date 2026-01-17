@@ -1,4 +1,5 @@
 'use client';
+import React from 'react';
 import { FaRocket, FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 
