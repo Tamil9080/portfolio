@@ -444,6 +444,12 @@
       transform: translate(-50%, -50%) rotate(var(--angle, 0deg)) translateY(var(--distance, 16px)) scale(var(--endScale, 1));
     }
   }
+  @keyframes scanline {
+    0% { transform: translateY(-100%); opacity: 0; }
+    50% { opacity: 1; }
+    100% { transform: translateY(500%); opacity: 0; }
+  }
+
   .text-gradient {
     @apply bg-gradient-to-r from-cyan-400 via-fuchsia-500 to-cyan-400 bg-clip-text text-transparent font-black;
     font-weight: 900;

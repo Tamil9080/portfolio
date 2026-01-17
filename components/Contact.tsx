@@ -1,6 +1,7 @@
 'use client';
 import { useState } from 'react';
-import { FaLinkedin, FaGithub, FaPaperPlane, FaInstagram, FaSpider, FaEnvelope } from 'react-icons/fa';
+import { FaLinkedin, FaGithub, FaPaperPlane, FaInstagram, FaEnvelope } from 'react-icons/fa';
+import { FaSpider } from 'react-icons/fa6';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 
 export default function Contact() {
@@ -117,14 +118,6 @@ export default function Contact() {
                   </>
                 )}
               </span>
-              
-              <style jsx>{`
-                @keyframes scanline {
-                  0% { transform: translateY(-100%); opacity: 0; }
-                  50% { opacity: 1; }
-                  100% { transform: translateY(500%); opacity: 0; }
-                }
-              `}</style>
             </button>
           </form>
           
