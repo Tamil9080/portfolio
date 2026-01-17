@@ -37,10 +37,15 @@ export default function Footer() {
            "With great data, comes great insight."
          </div>
 
-         <div className="mt-8 text-[9px] font-bold text-white/20 uppercase tracking-widest flex items-center justify-center gap-2">
-           <span>&copy; {new Date().getFullYear()}</span>
-           <span className="w-1 h-1 rounded-full bg-white/10" />
-           <span>Tamilselvan B S</span>
+         <div className="mt-8 text-[9px] font-bold text-white/20 uppercase tracking-widest flex flex-col items-center justify-center gap-4">
+           <div className="flex items-center gap-2">
+             <span>&copy; {new Date().getFullYear()}</span>
+             <span className="w-1 h-1 rounded-full bg-white/10" />
+             <span>Tamilselvan B S</span>
+           </div>
+           <div className="text-[7px] tracking-[0.3em] font-black text-white/5 group-hover:text-white/20 transition-colors">
+             Built & deployed with Vercel
+           </div>
          </div>
        </div>
     </footer>
