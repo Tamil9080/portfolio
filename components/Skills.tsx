@@ -32,7 +32,7 @@ export default function Skills() {
   const { ref, isVisible } = useScrollReveal();
   
   return (
-    <section ref={ref} id="skills" className="py-32 relative overflow-hidden">
+    <section ref={ref} id="skills" className="py-32 relative overflow-hidden scroll-mt-24">
       <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-red-600/5 blur-[120px] rounded-full pointer-events-none -z-10" />
       
       <div className="max-w-7xl mx-auto px-6">
@@ -59,13 +59,13 @@ export default function Skills() {
                 <div className="bg-[#0a0a0c]/80 backdrop-blur-xl rounded-[1.4rem] h-full p-8 border border-white/5 relative overflow-hidden">
                   <div className="absolute top-0 right-0 p-4 font-mono text-[40px] text-white/5 font-black group-hover:text-white/10 transition-colors">0{i+1}</div>
                   
-                  <h3 className="text-[10px] font-black text-cyan-400 uppercase tracking-[0.3em] mb-8 border-b border-white/5 pb-4">{category}</h3>
+                  <h3 className="text-xs font-black italic font-[Anton] text-cyan-400 uppercase tracking-widest mb-8 border-b border-white/5 pb-4">{category}</h3>
                   <ul className="space-y-4">
                     {skills.map((skill, si) => (
-                      <li key={si} className="group/skill flex items-center justify-between text-gray-400 hover:text-white transition-colors">
+                      <li key={si} className="group/skill flex items-center justify-between transition-all">
                         <div className="flex flex-col">
-                          <span className="text-sm font-bold tracking-tight">{skill.name}</span>
-                          <span className="text-[8px] font-mono text-cyan-400/50 uppercase">{skill.level}% Sync</span>
+                          <span className="text-sm font-black font-[Anton] italic uppercase tracking-wider text-white drop-shadow-[0_1px_1px_rgba(0,0,0,0.5)]">{skill.name}</span>
+                          <span className="text-[8px] font-mono text-cyan-400/50 uppercase tracking-widest">{skill.level}% Sync</span>
                         </div>
                         <div className="flex gap-1">
                            {[20, 40, 60, 80, 100].map((threshold) => (

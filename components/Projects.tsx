@@ -45,7 +45,7 @@ export default function Projects() {
   const { ref, isVisible } = useScrollReveal();
   
   return (
-    <section ref={ref} id="projects" className="py-32 px-6 max-w-7xl mx-auto relative">
+    <section ref={ref} id="projects" className="py-32 px-6 max-w-7xl mx-auto relative scroll-mt-24">
       <div className="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-8">
         <div className={`transition-all duration-1000 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'}`}>
           <h2 className="text-5xl font-black italic font-[Anton] uppercase tracking-normal drop-shadow-[0_2px_2px_rgba(0,0,0,0.8)]" style={{ WebkitTextStroke: '1.2px black' }}>
@@ -65,7 +65,7 @@ export default function Projects() {
             className={`transition-all duration-1000 delay-${index * 100} ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'} group relative`}
           >
             {/* Project Frame */}
-            <div className={`p-[1px] rounded-[2.5rem] bg-white/5 group-hover:bg-gradient-to-br transition-all duration-500 ease-out overflow-hidden h-full ${project.border.replace('30', '50')} hover:shadow-[0_0_50px_rgba(0,0,0,0.3)]`}>
+            <div className="p-[1px] rounded-[2.5rem] bg-white/5 border border-white/5 transition-all duration-500 ease-out overflow-hidden h-full shadow-xl">
               <div className="bg-[#0a0a0c] rounded-[2.4rem] h-full p-8 relative overflow-hidden">
                 {/* Background Pattern */}
                 <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-10 pointer-events-none" />
@@ -73,8 +73,8 @@ export default function Projects() {
                 {/* Card Header */}
                 <div className="flex justify-between items-start mb-12">
                   <div className="flex flex-col">
-                    <span className="text-[10px] font-black tracking-widest text-white/20 group-hover:text-red-500 transition-colors uppercase">{project.code}</span>
-                    <h3 className={`text-2xl font-black italic font-[Anton] uppercase mt-2 tracking-tight transition-colors ${project.color}`}>
+                    <span className="text-[10px] font-black tracking-widest text-white/20 uppercase">{project.code}</span>
+                    <h3 className="text-2xl font-black italic font-[Anton] uppercase mt-2 tracking-wide text-white drop-shadow-[0_2px_2px_rgba(0,0,0,0.5)]">
                       {project.title}
                     </h3>
                   </div>
@@ -100,9 +100,9 @@ export default function Projects() {
                     href={project.github} 
                     target="_blank" 
                     rel="noopener noreferrer" 
-                    className="flex-1 py-3 px-4 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center gap-2 hover:bg-white/10 transition-all active:scale-95 group/btn"
+                    className="flex-1 py-3 px-4 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center gap-2 hover:bg-white/10 transition-all active:scale-[0.96] group/btn hover:border-red-600/50 hover:shadow-[0_0_15px_rgba(220,38,38,0.3)]"
                   >
-                    <FaGithub className="text-white group-hover/btn:text-cyan-400 transition-colors" />
+                    <FaGithub className="text-white group-hover/btn:text-red-500 group-hover/btn:-translate-y-0.5 transition-all" />
                     <span className="text-[10px] font-black tracking-widest text-white">REPOS</span>
                   </a>
                   <div className="flex-1 py-3 px-4 rounded-2xl bg-gradient-to-r from-red-600/10 to-blue-600/10 border border-white/5 flex items-center justify-center gap-2 opacity-50 cursor-not-allowed">

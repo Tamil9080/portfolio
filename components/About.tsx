@@ -13,7 +13,7 @@ export default function About() {
   ];
 
   return (
-    <section ref={ref} id="about" className="py-32 px-6 max-w-7xl mx-auto relative overflow-hidden">
+    <section ref={ref} id="about" className="py-32 px-6 max-w-7xl mx-auto relative overflow-hidden scroll-mt-24">
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-[120%] bg-blue-600/5 blur-[120px] rounded-full pointer-events-none -z-10 animate-pulse" />
       
       <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
@@ -22,11 +22,11 @@ export default function About() {
           <div className="absolute inset-0 bg-[#0a0a0c] rounded-[2.9rem] m-[1px]" />
           <div className="relative z-10 p-10">
             {/* Multiverse Data Highlight */}
-            <div className="absolute top-8 right-12 text-[9px] font-mono text-white/20 uppercase tracking-[0.3em] flex flex-col items-end gap-1 text-right">
+            <div className="absolute top-8 right-12 text-[10px] font-black italic font-[Anton] text-white/20 uppercase tracking-widest flex flex-col items-end gap-1 text-right">
               <span className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-red-600 animate-ping"></span> Data Stream: Active</span>
-              <span>Universe: Earth-1610</span>
+              <span>Universe: Earth-50101</span>
               <span className="text-cyan-400">Target Identity: Tamil Selvan Affinity</span>
-              <span className="text-[7px] text-white/10 mt-1">LATENCY: 12ms // STABLE</span>
+              <span className="text-[8px] text-white/10 mt-1 font-mono tracking-normal">LATENCY: 12ms // STABLE</span>
             </div>
 
             <div className="absolute top-0 left-0 w-24 h-24 border-t-2 border-l-2 border-red-600/50 rounded-tl-[2.5rem]" />
@@ -121,9 +121,8 @@ export default function About() {
             <div key={i} className={`transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'} p-[1px] rounded-3xl bg-white/5 hover:bg-gradient-to-br hover:${s.colorPath} transition-all group relative overflow-hidden`}>
               <div className="absolute inset-0 bg-[#0a0a0c] rounded-[1.75rem] m-[1px]" />
               <div className="relative z-10 p-6 text-center">
-                <div className={`text-4xl font-black text-white mb-1 font-[Anton] transition-colors ${s.accent}`}>{s.value}</div>
+                <div className="text-4xl font-black text-white mb-1 font-[Anton] italic tracking-wide drop-shadow-[0_2px_2px_rgba(0,0,0,0.5)]">{s.value}</div>
                 <div className="text-[10px] text-gray-500 uppercase font-bold tracking-widest">{s.label}</div>
-                <div className={`absolute bottom-0 left-0 h-[2px] ${s.bar} transition-all duration-500 w-0 group-hover:w-full`} />
               </div>
             </div>
           ))}

@@ -15,7 +15,7 @@ export default function Footer() {
            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-16 h-[1px] bg-gradient-to-r from-transparent via-cyan-400/50 to-transparent" />
            
            <p className={`text-gray-500 text-[10px] font-black uppercase tracking-[0.5em] mb-6 transition-all duration-1000 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
-             Terminal_Closed // Earth_1610_Sync_Success
+             Terminal_Closed // Earth_50101_Sync_Success
            </p>
            
            <div className={`transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
@@ -35,6 +35,12 @@ export default function Footer() {
          
          <div className="mt-12 text-[8px] font-mono text-white/10 uppercase tracking-[0.4em]">
            "With great data, comes great insight."
+         </div>
+
+         <div className="mt-8 text-[9px] font-bold text-white/20 uppercase tracking-widest flex items-center justify-center gap-2">
+           <span>&copy; {new Date().getFullYear()}</span>
+           <span className="w-1 h-1 rounded-full bg-white/10" />
+           <span>Tamilselvan B S</span>
          </div>
        </div>
     </footer>

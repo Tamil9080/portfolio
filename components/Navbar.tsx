@@ -5,11 +5,12 @@ import { Menu, X } from 'lucide-react';
 import Link from 'next/link';
 
 const navItems = [
-  { label: "Home", href: "/" },
-  { label: "About", href: "/#about" },
-  { label: "Projects", href: "/#projects" },
-  { label: "Skills", href: "/#skills" },
-  { label: "Contact", href: "/contact" },
+  { label: "Home", href: "#home" },
+  { label: "About", href: "#about" },
+  { label: "Projects", href: "#projects" },
+  { label: "Skills", href: "#skills" },
+  { label: "Achievements", href: "#achievements" },
+  { label: "Contact", href: "#contact" },
 ];
 
 export default function Navbar() {
@@ -43,7 +44,7 @@ export default function Navbar() {
           </div>
           <div className="flex flex-col">
             <span className="text-xs font-black tracking-tighter text-white">TAMILSELVAN B S</span>
-            <span className="text-[10px] text-cyan-400/80 font-bold tracking-[0.2em] leading-none uppercase">Multiverse Dev</span>
+            <span className="text-[9px] text-cyan-400/80 font-black italic font-[Anton] tracking-[0.1em] leading-none uppercase">Multiverse Dev</span>
           </div>
         </div>
 
@@ -53,7 +54,7 @@ export default function Navbar() {
         </div>
 
         <div className="flex items-center gap-4">
-          <a href="#" className="hidden md:flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-red-600/20 to-blue-600/20 hover:from-red-600/30 hover:to-blue-600/30 border border-white/10 glass rounded-xl text-white text-[10px] font-black tracking-widest transition-all hover:scale-105 hover:border-cyan-400/40 uppercase">
+          <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="hidden md:flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-red-600/20 to-blue-600/20 hover:from-red-600/40 hover:to-blue-600/40 border border-white/10 glass rounded-xl text-white text-[10px] font-black tracking-widest transition-all hover:scale-105 hover:border-red-600/50 hover:shadow-[0_0_20px_rgba(220,38,38,0.3)] active:scale-[0.98] uppercase">
             Resume
           </a>
           
@@ -90,7 +91,9 @@ export default function Navbar() {
             </Link>
           ))}
           <a 
-            href="#" 
+            href="/resume.pdf" 
+            target="_blank"
+            rel="noopener noreferrer"
             className="mt-8 px-10 py-4 bg-white/5 border border-white/10 glass rounded-2xl text-white font-black tracking-widest hover:border-red-500/50 hover:text-red-500 transition-all uppercase text-sm"
             onClick={() => setIsMenuOpen(false)}
           >

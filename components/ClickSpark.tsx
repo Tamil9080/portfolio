@@ -73,20 +73,7 @@ export default function ClickSpark({
                   boxShadow: `0 0 ${Math.max(6, sparkSize)}px rgba(255,255,255,0.6)`,
                   transform: `translate(-50%, -50%) rotate(${finalAngle}deg)`,
                   animation: `clickSparkParticle ${duration}ms ${easing} forwards`,
-                  // Pass variables to the keyframes via CSS custom properties
-                  // Move outward along rotated axis and fade/scale
-                  // translateY uses distance in px; scale ends at endScale
-                  // opacity handled in keyframes
-                  // Using CSS vars for clarity (not required)
-                  // @keyframes will read these via var(--distance) / var(--endScale)
-                  // but here we directly embed values into keyframes transform
-                  // to ensure broad browser support.
-                  // NOTE: The keyframes reference transform segments only.
-                  // We rely on initial rotate(...) from the span style above.
-                  // The keyframes append translateY/scale changes over time.
-                  // See globals.css for details.
-                  // CSS Vars retained for readability and potential future tweaks.
-                  // @ts-ignore - CSS var typing not enforced
+                  ["--angle" as any]: `${finalAngle}deg`,
                   ["--distance" as any]: `${distance}px`,
                   ["--endScale" as any]: endScale,
                   willChange: "transform, opacity",

@@ -21,7 +21,7 @@ export default function Hero() {
   }, []);
 
   return (
-    <section id="home" className="min-h-[90vh] pt-20 md:pt-40 flex flex-col items-center justify-center px-6 text-center">
+    <section id="home" className="min-h-[90vh] pt-20 md:pt-40 flex flex-col items-center justify-center px-6 text-center scroll-mt-20">
       <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full glass text-cyan-400 text-xs font-medium mb-12 animate-fade-in text-nowrap border-2 border-cyan-400/40">
         <span className="relative flex h-2 w-2">
           <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
@@ -119,16 +119,27 @@ export default function Hero() {
           Bridging dimensions of AI, Data Science, and Web Development to create impactful solutions across the multiverse.
         </p>
 
-        {/* Multiverse Coordinate Badge */}
-        <div className="mt-8 flex justify-center">
-          <div className="px-4 py-1.5 rounded-xl bg-white/5 border border-white/10 flex items-center gap-3 group/coord hover:border-red-500/30 transition-all cursor-crosshair">
+        {/* Multiverse Coordinate Badges */}
+        <div className="mt-8 flex flex-wrap justify-center gap-4">
+          <div className="px-4 py-1.5 rounded-xl bg-white/5 border border-white/10 flex items-center gap-3 group/coord hover:border-cyan-400/30 transition-all cursor-crosshair">
             <div className="flex flex-col items-start leading-none">
-              <span className="text-[8px] font-black text-white/20 uppercase tracking-widest group-hover/coord:text-red-500/50 transition-colors">Coordinate</span>
-              <span className="text-[10px] font-mono text-cyan-400 font-bold tracking-tighter">Lat: 13.0827° N // Lon: 80.2707° E</span>
+              <span className="text-[8px] font-black text-white/20 uppercase tracking-widest group-hover/coord:text-cyan-400/50 transition-colors">Home_Node</span>
+              <span className="text-[10px] font-mono text-cyan-400 font-bold tracking-tighter">13.0827° N // 80.2707° E</span>
             </div>
             <div className="h-6 w-[1px] bg-white/10" />
             <div className="text-[10px] font-black text-white/40 uppercase tracking-widest">
-              Universe: <span className="text-white group-hover/coord:text-cyan-400">Earth-616</span>
+              Universe: <span className="text-white group-hover/coord:text-cyan-400">Earth-50101</span>
+            </div>
+          </div>
+
+          <div className="px-4 py-1.5 rounded-xl bg-white/5 border border-white/10 flex items-center gap-3 group/coord hover:border-red-500/30 transition-all cursor-crosshair hidden md:flex">
+            <div className="flex flex-col items-start leading-none">
+              <span className="text-[8px] font-black text-white/20 uppercase tracking-widest group-hover/coord:text-red-500/50 transition-colors">Nexus_Point</span>
+              <span className="text-[10px] font-mono text-red-500 font-bold tracking-tighter">19.0760° N // 72.8777° E</span>
+            </div>
+            <div className="h-6 w-[1px] bg-white/10" />
+            <div className="text-[10px] font-black text-white/40 uppercase tracking-widest">
+              Loc: <span className="text-white group-hover/coord:text-red-500">Mumbattan</span>
             </div>
           </div>
         </div>
@@ -145,13 +156,24 @@ export default function Hero() {
         </a>
 
         <Link 
-          href="/contact" 
+          href="#contact" 
           className="px-10 py-5 bg-white/5 border border-white/10 rounded-2xl font-black text-white hover:border-cyan-400 hover:text-cyan-400 hover:scale-105 transition-all flex items-center gap-3 group relative overflow-hidden active:scale-95"
         >
           <div className="absolute inset-0 bg-cyan-400/5 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
           <span className="relative z-10 uppercase tracking-tighter italic">Signal the Spider</span>
           <span className="text-xl group-hover:animate-pulse transition-transform">🕷️</span>
         </Link>
+
+        <a 
+          href="/resume.pdf" 
+          target="_blank"
+          rel="noopener noreferrer"
+          className="px-10 py-5 bg-white/5 border border-white/10 rounded-2xl font-black text-white hover:border-red-600 hover:text-red-500 hover:scale-105 transition-all flex items-center gap-3 group relative overflow-hidden active:scale-95"
+        >
+          <div className="absolute inset-0 bg-red-600/5 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
+          <span className="relative z-10 uppercase tracking-tighter italic">Access Dossier</span>
+          <span className="text-xl group-hover:rotate-12 transition-transform">📄</span>
+        </a>
         
         <div className="flex gap-4">
           <a href="https://github.com/Tamil9080" target="_blank" className="p-5 bg-white/5 border border-white/10 rounded-2xl text-white hover:text-cyan-400 hover:border-cyan-400/40 hover:-translate-y-1 transition-all group/soc">
