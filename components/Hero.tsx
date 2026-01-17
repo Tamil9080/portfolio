@@ -2,6 +2,7 @@
 
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import { useState, useEffect } from 'react';
+import Link from 'next/link';
 
 export default function Hero() {
   const [titleIndex, setTitleIndex] = useState(0);
@@ -20,7 +21,7 @@ export default function Hero() {
   }, []);
 
   return (
-    <section id="home" className="min-h-[90vh] pt-20 md:pt-40 flex flex-col items-center justify-center px-6 text-center">
+    <section id="home" className="min-h-[90vh] pt-20 md:pt-40 flex flex-col items-center justify-center px-6 text-center scroll-mt-20">
       <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full glass text-cyan-400 text-xs font-medium mb-12 animate-fade-in text-nowrap border-2 border-cyan-400/40">
         <span className="relative flex h-2 w-2">
           <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
@@ -34,13 +35,6 @@ export default function Hero() {
           <style>{`
             @import url('https://fonts.googleapis.com/css2?family=Anton&family=Plus+Jakarta+Sans:wght@400;700;800&display=swap');
             
-            @keyframes chromaticShift {
-              0%, 100% { transform: translate(0, 0); opacity: 1; }
-              2% { transform: translate(-2px, 1px); opacity: 0.8; }
-              4% { transform: translate(2px, -1px); opacity: 0.8; }
-              6% { transform: translate(0, 0); opacity: 1; }
-            }
-
             @keyframes subtleFloat {
               0%, 100% { transform: translateY(0); }
               50% { transform: translateY(-5px); }
@@ -57,39 +51,8 @@ export default function Hero() {
               letter-spacing: -0.02em;
               -webkit-font-smoothing: antialiased;
               text-rendering: optimizeLegibility;
-              /* Classic 3D comic depth */
-              text-shadow: 
-                1px 1px 0px #000,
-                2px 2px 0px #000,
-                3px 3px 0px #000,
-                4px 4px 0px #000,
-                5px 5px 15px rgba(0,0,0,0.4);
-            }
-
-            .high-quality-name::before,
-            .high-quality-name::after {
-              content: "TAMILSELVAN";
-              position: absolute;
-              top: 0;
-              left: 0;
-              width: 100%;
-              height: 100%;
-              z-index: -1;
-              pointer-events: none;
-            }
-
-            /* Red distortion layer */
-            .high-quality-name::before {
-              color: rgba(230, 36, 41, 0.5);
-              animation: chromaticShift 3s infinite linear;
-              left: -3px;
-            }
-
-            /* Blue distortion layer */
-            .high-quality-name::after {
-              color: rgba(0, 102, 255, 0.5);
-              animation: chromaticShift 3s infinite linear reverse;
-              left: 3px;
+              /* Clean 3D shadow for depth without stroke */
+              text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
             }
             
             .greeting-text {
@@ -155,19 +118,75 @@ export default function Hero() {
         <p className="text-gray-300 text-base md:text-lg leading-relaxed text-center max-w-2xl mx-auto">
           Bridging dimensions of AI, Data Science, and Web Development to create impactful solutions across the multiverse.
         </p>
+
+        {/* Multiverse Coordinate Badges */}
+        <div className="mt-8 flex flex-wrap justify-center gap-4">
+          <div className="px-4 py-1.5 rounded-xl bg-white/5 border border-white/10 flex items-center gap-3 group/coord hover:border-cyan-400/30 transition-all cursor-crosshair">
+            <div className="flex flex-col items-start leading-none">
+              <span className="text-[8px] font-black text-white/20 uppercase tracking-widest group-hover/coord:text-cyan-400/50 transition-colors">Home_Node</span>
+              <span className="text-[10px] font-mono text-cyan-400 font-bold tracking-tighter">13.0827° N // 80.2707° E</span>
+            </div>
+            <div className="h-6 w-[1px] bg-white/10" />
+            <div className="text-[10px] font-black text-white/40 uppercase tracking-widest">
+              Universe: <span className="text-white group-hover/coord:text-cyan-400">Earth-50101</span>
+            </div>
+          </div>
+
+          <div className="px-4 py-1.5 rounded-xl bg-white/5 border border-white/10 flex items-center gap-3 group/coord hover:border-red-500/30 transition-all cursor-crosshair hidden md:flex">
+            <div className="flex flex-col items-start leading-none">
+              <span className="text-[8px] font-black text-white/20 uppercase tracking-widest group-hover/coord:text-red-500/50 transition-colors">Nexus_Point</span>
+              <span className="text-[10px] font-mono text-red-500 font-bold tracking-tighter">19.0760° N // 72.8777° E</span>
+            </div>
+            <div className="h-6 w-[1px] bg-white/10" />
+            <div className="text-[10px] font-black text-white/40 uppercase tracking-widest">
+              Loc: <span className="text-white group-hover/coord:text-red-500">Mumbattan</span>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <div className="flex flex-wrap gap-4 justify-center animate-fade-in" style={{ animationDelay: '0.4s' }}>
+      <div className="flex flex-wrap gap-6 justify-center animate-fade-in relative z-10" style={{ animationDelay: '0.4s' }}>
         <a 
           href="#projects" 
-          className="px-8 py-4 glass text-white rounded-2xl font-black hover:border-cyan-400/60 hover:scale-105 transition-all flex items-center gap-2 group relative overflow-hidden"
+          className="px-10 py-5 bg-gradient-to-r from-red-600 to-blue-600 rounded-2xl font-black text-white hover:scale-110 hover:shadow-[0_0_30px_rgba(230,36,41,0.4)] transition-all flex items-center gap-3 group relative overflow-hidden active:scale-95"
         >
-          <span className="relative z-10">View Missions 🌀</span>
+          <div className="absolute inset-0 bg-white/20 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
+          <span className="relative z-10 uppercase tracking-tighter italic">Enter the Breach</span>
+          <span className="text-xl group-hover:rotate-12 transition-transform">🌀</span>
         </a>
+
+        <Link 
+          href="#contact" 
+          className="px-10 py-5 bg-white/5 border border-white/10 rounded-2xl font-black text-white hover:border-cyan-400 hover:text-cyan-400 hover:scale-105 transition-all flex items-center gap-3 group relative overflow-hidden active:scale-95"
+        >
+          <div className="absolute inset-0 bg-cyan-400/5 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
+          <span className="relative z-10 uppercase tracking-tighter italic">Signal the Spider</span>
+          <span className="text-xl group-hover:animate-pulse transition-transform">🕷️</span>
+        </Link>
+
+        <a 
+          href="/resume.pdf" 
+          target="_blank"
+          rel="noopener noreferrer"
+          className="px-10 py-5 bg-white/5 border border-white/10 rounded-2xl font-black text-white hover:border-red-600 hover:text-red-500 hover:scale-105 transition-all flex items-center gap-3 group relative overflow-hidden active:scale-95"
+        >
+          <div className="absolute inset-0 bg-red-600/5 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
+          <span className="relative z-10 uppercase tracking-tighter italic">Access Dossier</span>
+          <span className="text-xl group-hover:rotate-12 transition-transform">📄</span>
+        </a>
+        
         <div className="flex gap-4">
-          <a href="#" className="p-4 glass rounded-2xl text-gray-400 hover:text-cyan-400 hover:border-cyan-400/40 transition-all"><FaGithub size={20} /></a>
-          <a href="#" className="p-4 glass rounded-2xl text-gray-400 hover:text-cyan-400 hover:border-cyan-400/40 transition-all"><FaLinkedin size={20} /></a>
+          <a href="https://github.com/Tamil9080" target="_blank" className="p-5 bg-white/5 border border-white/10 rounded-2xl text-white hover:text-cyan-400 hover:border-cyan-400/40 hover:-translate-y-1 transition-all group/soc">
+            <FaGithub size={24} className="group-hover/soc:rotate-[360deg] transition-transform duration-500" />
+          </a>
+          <a href="https://www.linkedin.com/in/tamil-selvan-301024294/" target="_blank" className="p-5 bg-white/5 border border-white/10 rounded-2xl text-white hover:text-blue-500 hover:border-blue-500/40 hover:-translate-y-1 transition-all group/soc">
+            <FaLinkedin size={24} className="group-hover/soc:rotate-[360deg] transition-transform duration-500" />
+          </a>
         </div>
+      </div>
+
+      <div className="mt-20 animate-bounce">
+         <div className="w-1 h-12 rounded-full bg-gradient-to-b from-cyan-400 to-transparent opacity-20 mx-auto" />
       </div>
     </section>
   );

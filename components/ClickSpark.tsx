@@ -1,7 +1,7 @@
 "use client";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, ReactNode } from "react";
 
-type ClickSparkProps = {
+interface ClickSparkProps {
   sparkColor?: string;
   sparkSize?: number; // px
   sparkRadius?: number; // px distance
@@ -9,7 +9,8 @@ type ClickSparkProps = {
   duration?: number; // ms
   easing?: string;
   extraScale?: number; // multiplier for ending scale
-};
+  children?: ReactNode;
+}
 
 interface Burst {
   id: number;
@@ -17,7 +18,7 @@ interface Burst {
   y: number; // clientY
 }
 
-export default function ClickSpark({
+const ClickSpark: React.FC<ClickSparkProps> = ({
   sparkColor = "#ffffff",
   sparkSize = 8,
   sparkRadius = 16,
@@ -25,7 +26,8 @@ export default function ClickSpark({
   duration = 450,
   easing = "ease-out",
   extraScale = 1,
-}: ClickSparkProps) {
+  children,
+}) => {
   const [bursts, setBursts] = useState<Burst[]>([]);
   const idRef = useRef(0);
 
@@ -55,6 +57,7 @@ export default function ClickSpark({
         contain: "layout paint size",
       }}
     >
+      {children}
       {bursts.map((b) => (
         <div key={b.id} className="absolute" style={{ left: b.x, top: b.y }}>
           {Array.from({ length: sparkCount }).map((_, i) => {
@@ -66,31 +69,18 @@ export default function ClickSpark({
                 key={i}
                 className="block absolute"
                 style={{
-                  width: sparkSize,
-                  height: sparkSize,
-                  borderRadius: sparkSize / 2,
+                  width: "2px",
+                  height: sparkSize * 1.5,
                   background: sparkColor,
-                  boxShadow: `0 0 ${Math.max(6, sparkSize)}px rgba(255,255,255,0.6)`,
+                  boxShadow: `0 0 8px ${sparkColor}`,
+                  borderRadius: "1px",
                   transform: `translate(-50%, -50%) rotate(${finalAngle}deg)`,
                   animation: `clickSparkParticle ${duration}ms ${easing} forwards`,
-                  // Pass variables to the keyframes via CSS custom properties
-                  // Move outward along rotated axis and fade/scale
-                  // translateY uses distance in px; scale ends at endScale
-                  // opacity handled in keyframes
-                  // Using CSS vars for clarity (not required)
-                  // @keyframes will read these via var(--distance) / var(--endScale)
-                  // but here we directly embed values into keyframes transform
-                  // to ensure broad browser support.
-                  // NOTE: The keyframes reference transform segments only.
-                  // We rely on initial rotate(...) from the span style above.
-                  // The keyframes append translateY/scale changes over time.
-                  // See globals.css for details.
-                  // CSS Vars retained for readability and potential future tweaks.
-                  // @ts-ignore - CSS var typing not enforced
-                  ["--distance" as any]: `${distance}px`,
-                  ["--endScale" as any]: endScale,
+                  ["--angle" as string]: `${finalAngle}deg`,
+                  ["--distance" as string]: `${distance}px`,
+                  ["--endScale" as string]: endScale.toString(),
                   willChange: "transform, opacity",
-                }}
+                } as React.CSSProperties}
               />
             );
           })}
@@ -98,4 +88,6 @@ export default function ClickSpark({
       ))}
     </div>
   );
-}
+};
+
+export default ClickSpark;
