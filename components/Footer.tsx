@@ -34,7 +34,7 @@ export default function Footer() {
          </div>
          
          <div className="mt-12 text-[8px] font-mono text-white/10 uppercase tracking-[0.4em]">
-           "With great data, comes great insight."
+           &quot;With great data, comes great insight.&quot;
          </div>
 
          <div className="mt-8 text-[9px] font-bold text-white/20 uppercase tracking-widest flex flex-col items-center justify-center gap-4">

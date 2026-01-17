@@ -33,7 +33,7 @@ export default function Skills() {
   
   return (
     <section ref={ref} id="skills" className="py-32 relative overflow-hidden scroll-mt-24">
-      <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-red-600/5 blur-[120px] rounded-full pointer-events-none -z-10" />
+      <div className="hidden sm:block absolute top-0 left-1/4 w-[500px] h-[500px] bg-red-600/5 blur-[120px] rounded-full pointer-events-none -z-10" />
       
       <div className="max-w-7xl mx-auto px-6">
         <div className="mb-20 flex flex-col items-center">

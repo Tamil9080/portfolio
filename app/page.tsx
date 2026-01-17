@@ -1,3 +1,5 @@
+"use client";
+
 import Navbar from '../components/Navbar';
 import Hero from '../components/Hero';
 import About from '../components/About';
@@ -21,7 +23,7 @@ export default function Home() {
 
       <div className="relative z-10">
         <Navbar />
-        <div className="pt-16 page-content">
+        <div className="pt-24 md:pt-16 page-content">
           <Hero />
           <About />
           <Projects />

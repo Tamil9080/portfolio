@@ -14,7 +14,7 @@ export default function About() {
 
   return (
     <section ref={ref} id="about" className="py-32 px-6 max-w-7xl mx-auto relative overflow-hidden scroll-mt-24">
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-[120%] bg-blue-600/5 blur-[120px] rounded-full pointer-events-none -z-10 animate-pulse" />
+      <div className="hidden sm:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-[120%] bg-blue-600/5 blur-[120px] rounded-full pointer-events-none -z-10 animate-pulse" />
       
       <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
         {/* Main Dossier Card */}
@@ -22,7 +22,7 @@ export default function About() {
           <div className="absolute inset-0 bg-[#0a0a0c] rounded-[2.9rem] m-[1px]" />
           <div className="relative z-10 p-10">
             {/* Multiverse Data Highlight */}
-            <div className="absolute top-8 right-12 text-[10px] font-black italic font-[Anton] text-white/20 uppercase tracking-widest flex flex-col items-end gap-1 text-right">
+            <div className="hidden md:flex absolute top-8 right-12 text-[10px] font-black italic font-[Anton] text-white/20 uppercase tracking-widest flex-col items-end gap-1 text-right">
               <span className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-red-600 animate-ping"></span> Data Stream: Active</span>
               <span>Universe: Earth-50101</span>
               <span className="text-cyan-400">Target Identity: Tamil Selvan Affinity</span>

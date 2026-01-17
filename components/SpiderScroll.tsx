@@ -59,7 +59,7 @@ const SpiderScroll = () => {
 
   return (
     <div 
-      className={`fixed right-4 md:right-8 top-0 h-full z-[150] pointer-events-none transition-opacity duration-500 ${isVisible ? 'opacity-100' : 'opacity-0'}`}
+      className={`hidden sm:block fixed right-4 md:right-8 top-0 h-full z-[150] pointer-events-none transition-opacity duration-500 ${isVisible ? 'opacity-100' : 'opacity-0'}`}
       style={{ width: '50px' }}
     >
       <style>{`

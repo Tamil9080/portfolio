@@ -1,7 +1,7 @@
 "use client";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, ReactNode } from "react";
 
-type ClickSparkProps = {
+interface ClickSparkProps {
   sparkColor?: string;
   sparkSize?: number; // px
   sparkRadius?: number; // px distance
@@ -9,8 +9,8 @@ type ClickSparkProps = {
   duration?: number; // ms
   easing?: string;
   extraScale?: number; // multiplier for ending scale
-  children?: React.ReactNode;
-};
+  children?: ReactNode;
+}
 
 interface Burst {
   id: number;
@@ -18,7 +18,7 @@ interface Burst {
   y: number; // clientY
 }
 
-export default function ClickSpark({
+const ClickSpark: React.FC<ClickSparkProps> = ({
   sparkColor = "#ffffff",
   sparkSize = 8,
   sparkRadius = 16,
@@ -27,7 +27,7 @@ export default function ClickSpark({
   easing = "ease-out",
   extraScale = 1,
   children,
-}: ClickSparkProps) {
+}) => {
   const [bursts, setBursts] = useState<Burst[]>([]);
   const idRef = useRef(0);
 
@@ -76,11 +76,11 @@ export default function ClickSpark({
                   borderRadius: "1px",
                   transform: `translate(-50%, -50%) rotate(${finalAngle}deg)`,
                   animation: `clickSparkParticle ${duration}ms ${easing} forwards`,
-                  ["--angle" as any]: `${finalAngle}deg`,
-                  ["--distance" as any]: `${distance}px`,
-                  ["--endScale" as any]: endScale,
+                  ["--angle" as string]: `${finalAngle}deg`,
+                  ["--distance" as string]: `${distance}px`,
+                  ["--endScale" as string]: endScale.toString(),
                   willChange: "transform, opacity",
-                }}
+                } as React.CSSProperties}
               />
             );
           })}
@@ -88,4 +88,6 @@ export default function ClickSpark({
       ))}
     </div>
   );
-}
+};
+
+export default ClickSpark;
