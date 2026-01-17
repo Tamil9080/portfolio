@@ -9,6 +9,7 @@ type ClickSparkProps = {
   duration?: number; // ms
   easing?: string;
   extraScale?: number; // multiplier for ending scale
+  children?: React.ReactNode;
 };
 
 interface Burst {
@@ -25,6 +26,7 @@ export default function ClickSpark({
   duration = 450,
   easing = "ease-out",
   extraScale = 1,
+  children,
 }: ClickSparkProps) {
   const [bursts, setBursts] = useState<Burst[]>([]);
   const idRef = useRef(0);
@@ -55,6 +57,7 @@ export default function ClickSpark({
         contain: "layout paint size",
       }}
     >
+      {children}
       {bursts.map((b) => (
         <div key={b.id} className="absolute" style={{ left: b.x, top: b.y }}>
           {Array.from({ length: sparkCount }).map((_, i) => {
