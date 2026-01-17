@@ -30,7 +30,7 @@ export default function Contact() {
       } else {
         alert('Transmission Interrupted. Check your uplink (Formspree ID).');
       }
-    } catch (error) {
+    } catch {
       alert('Neural link failed. Critical system error.');
     } finally {
       setIsSubmitting(false);

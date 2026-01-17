@@ -1,5 +1,5 @@
 'use client';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, useCallback } from 'react';
 import dynamic from 'next/dynamic';
 
 const Hyperspeed = dynamic(() => import('./Hyperspeed.jsx'), { ssr: false });
@@ -33,7 +33,7 @@ export default function GrandEntrance({ onComplete }: GrandEntranceProps) {
     };
   }, []);
 
-  const handleAction = () => {
+  const handleAction = useCallback(() => {
     if (phase !== 'typed') return;
     setPhase('hyperspeed');
     // Let hyperspeed run (3.5s) then quick fade
@@ -44,7 +44,7 @@ export default function GrandEntrance({ onComplete }: GrandEntranceProps) {
         onComplete?.();
       }, 600);
     }, 3500);
-  };
+  }, [phase, onComplete]);
 
   // Handle actions (key press or click)
   useEffect(() => {
@@ -56,7 +56,7 @@ export default function GrandEntrance({ onComplete }: GrandEntranceProps) {
 
     window.addEventListener('keydown', handleEvents);
     return () => window.removeEventListener('keydown', handleEvents);
-  }, [phase, onComplete]);
+  }, [phase, handleAction]);
 
   const handleSpeedUp = () => {
     // Optional: Add any effects when speed increases

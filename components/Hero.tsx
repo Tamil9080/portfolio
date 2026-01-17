@@ -18,7 +18,7 @@ export default function Hero() {
       setTitleIndex((prev) => (prev + 1) % titles.length);
     }, 3000);
     return () => clearInterval(interval);
-  }, []);
+  }, [titles.length]);
 
   return (
     <section id="home" className="min-h-[90vh] pt-20 md:pt-40 flex flex-col items-center justify-center px-6 text-center scroll-mt-20">

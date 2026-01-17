@@ -1,7 +1,16 @@
 "use client";
-import { useRef, useEffect, useState } from 'react';
+import { useRef, useEffect, useState, useCallback } from 'react';
 import Link from 'next/link';
 import './GooeyNav.css';
+
+// Deterministic PRNG to avoid impure Math.random during render
+function createPRNG(seed = 987654321) {
+  let s = seed >>> 0;
+  return function rand() {
+    s = (Math.imul(1664525, s) + 1013904223) >>> 0;
+    return s / 4294967296;
+  };
+}
 
 const GooeyNav = ({
   items,
@@ -13,36 +22,49 @@ const GooeyNav = ({
   colors = [1, 2, 3, 1, 2, 3, 1, 4], // Spider-Verse colors
   initialActiveIndex = 0,
   enableScrollSpy = true,
-  scrollSpyThreshold = 0.6,
+  _scrollSpyThreshold = 0.6,
   moveTime = 350
 }) => {
   const containerRef = useRef(null);
   const navRef = useRef(null);
   const filterRef = useRef(null);
   const textRef = useRef(null);
-  const [activeIndex, setActiveIndex] = useState(initialActiveIndex);
+  const [activeIndex, setActiveIndex] = useState(() => {
+    if (typeof window !== 'undefined' && Array.isArray(items)) {
+      const hash = window.location.hash;
+      if (hash) {
+        const idx = items.findIndex(it => {
+          if (!it?.href) return false;
+          if (it.href.startsWith('#')) return it.href === hash;
+          if (it.href.startsWith('/#')) return it.href.substring(1) === hash;
+          return false;
+        });
+        if (idx >= 0) return idx;
+      }
+    }
+    return initialActiveIndex;
+  });
   const changeSourceRef = useRef(null);
+  const rand = useRef(createPRNG(1337)).current;
+  const noise = useCallback((n = 1) => n / 2 - rand() * n, [rand]);
 
-  const noise = (n = 1) => n / 2 - Math.random() * n;
-
-  const getXY = (distance, pointIndex, totalPoints) => {
+  const getXY = useCallback((distance, pointIndex, totalPoints) => {
     const angle = ((360 + noise(8)) / totalPoints) * pointIndex * (Math.PI / 180);
     return [distance * Math.cos(angle), distance * Math.sin(angle)];
-  };
+  }, [noise]);
 
-  const createParticle = (i, t, d, r) => {
+  const createParticle = useCallback((i, t, d, r) => {
     let rotate = noise(r / 10);
     return {
       start: getXY(d[0], particleCount - i, particleCount),
       end: getXY(d[1] + noise(7), particleCount - i, particleCount),
       time: t,
       scale: 1 + noise(0.2),
-      color: colors[Math.floor(Math.random() * colors.length)],
+      color: colors[Math.floor(rand() * colors.length)],
       rotate: rotate > 0 ? (rotate + r / 20) * 10 : (rotate - r / 20) * 10
     };
-  };
-
-  const makeParticles = element => {
+  }, [noise, particleCount, rand, getXY, colors]);
+  const makeParticles = useCallback((element) => {
     const d = particleDistances;
     const r = particleR;
     const bubbleTime = animationTime * 2 + timeVariance;
@@ -81,9 +103,9 @@ const GooeyNav = ({
         }, t);
       }, 30);
     }
-  };
+  }, [animationTime, timeVariance, particleCount, particleDistances, particleR, createParticle, noise]);
 
-  const updateEffectPosition = element => {
+  const updateEffectPosition = useCallback((element) => {
     if (!containerRef.current || !filterRef.current || !textRef.current) return;
     const containerRect = containerRef.current.getBoundingClientRect();
     const pos = element.getBoundingClientRect();
@@ -99,7 +121,7 @@ const GooeyNav = ({
     filterRef.current.style.setProperty('--move-time', `${moveTime}ms`);
     textRef.current.style.setProperty('--move-time', `${moveTime}ms`);
     textRef.current.innerText = element.innerText;
-  };
+  }, [moveTime]);
 
   const handleClick = (e, index) => {
     const liEl = e.currentTarget;
@@ -168,7 +190,7 @@ const GooeyNav = ({
 
     resizeObserver.observe(containerRef.current);
     return () => resizeObserver.disconnect();
-  }, [activeIndex]);
+  }, [activeIndex, updateEffectPosition, makeParticles]);
 
   // Scroll spy: update activeIndex based on visible section
   useEffect(() => {
@@ -194,7 +216,7 @@ const GooeyNav = ({
 
     // Enhanced scroll detection for better responsiveness
     const handleScroll = () => {
-      const scrollPosition = window.scrollY + 150;
+      const scrollPosition = window.scrollY + window.innerHeight * _scrollSpyThreshold;
       
       let currentSection = validSections[0];
       
@@ -232,16 +254,6 @@ const GooeyNav = ({
     // Run once on mount to set initial state
     handleScroll();
 
-    // Initialize from current hash if present
-    if (window.location.hash) {
-      const initial = validSections.find(s => s.selector === window.location.hash);
-      if (initial) {
-        lastActiveIdx = initial.idx;
-        changeSourceRef.current = 'hash';
-        setActiveIndex(initial.idx);
-      }
-    }
-
     const onHashChange = () => {
       const target = validSections.find(s => s.selector === window.location.hash);
       if (target && target.idx !== lastActiveIdx) {
@@ -257,7 +269,7 @@ const GooeyNav = ({
       window.removeEventListener('hashchange', onHashChange);
       if (scrollTimeout) clearTimeout(scrollTimeout);
     };
-  }, [items, enableScrollSpy]);
+  }, [items, enableScrollSpy, activeIndex, _scrollSpyThreshold]);
 
   return (
     <div className="gooey-nav-container" ref={containerRef}>

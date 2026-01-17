@@ -6,11 +6,10 @@ const SpiderScroll = () => {
   const [scrollPercentage, setScrollPercentage] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
   const [direction, setDirection] = useState<'up' | 'down'>('down');
-  const [isMounted, setIsMounted] = useState(false);
   const lastScrollY = useRef(0);
+  const isClient = typeof window !== 'undefined';
 
   useEffect(() => {
-    setIsMounted(true);
     const handleScroll = () => {
       const windowHeight = window.innerHeight;
       const documentHeight = document.documentElement.scrollHeight - windowHeight;
@@ -52,7 +51,7 @@ const SpiderScroll = () => {
   };
 
   const getActionLabel = () => {
-    if (!isMounted) return 'Dive In';
+    if (!isClient) return 'Dive In';
     if (window.scrollY < 300) return 'Dive In';
     return direction === 'up' ? 'Swing Up' : 'Keep Going';
   };
