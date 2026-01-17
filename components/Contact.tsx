@@ -136,7 +136,7 @@ export default function Contact() {
                <p className="text-xs font-bold text-white group-hover:text-cyan-400 transition-colors">LinkedIn</p>
             </a>
 
-            <a href="https://www.instagram.com/tamilselvan_30/" target="_blank" rel="noopener noreferrer" className="group relative p-5 bg-white/5 border border-white/10 rounded-[2rem] hover:bg-white/10 transition-all hover:border-red-600/50 shadow-[0_0_0_rgba(220,38,38,0)] hover:shadow-[0_0_20px_rgba(220,38,38,0.2)] text-center flex flex-col items-center justify-center min-h-[160px]">
+            <a href="https://www.instagram.com/_tamilselvanofficial/" target="_blank" rel="noopener noreferrer" className="group relative p-5 bg-white/5 border border-white/10 rounded-[2rem] hover:bg-white/10 transition-all hover:border-red-600/50 shadow-[0_0_0_rgba(220,38,38,0)] hover:shadow-[0_0_20px_rgba(220,38,38,0.2)] text-center flex flex-col items-center justify-center min-h-[160px]">
                <div className="absolute top-2 right-4 text-[7px] font-black text-white/5 uppercase tracking-[0.2em] group-hover:text-red-600/40">NODE_03</div>
                <FaInstagram size={28} className="text-pink-500 mb-4 group-hover:scale-110 transition-transform group-hover:rotate-12" />
                <p className="text-[9px] font-black text-white/30 uppercase tracking-widest mb-1">Visual_Logs</p>
