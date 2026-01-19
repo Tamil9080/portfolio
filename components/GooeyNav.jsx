@@ -29,7 +29,13 @@ const GooeyNav = ({
   const navRef = useRef(null);
   const filterRef = useRef(null);
   const textRef = useRef(null);
-  const [activeIndex, setActiveIndex] = useState(() => {
+  const [activeIndex, setActiveIndex] = useState(initialActiveIndex);
+  const changeSourceRef = useRef(null);
+  const rand = useRef(createPRNG(1337)).current;
+  const noise = useCallback((n = 1) => n / 2 - rand() * n, [rand]);
+
+  // Handle hash-based active index on client only
+  useEffect(() => {
     if (typeof window !== 'undefined' && Array.isArray(items)) {
       const hash = window.location.hash;
       if (hash) {
@@ -39,14 +45,12 @@ const GooeyNav = ({
           if (it.href.startsWith('/#')) return it.href.substring(1) === hash;
           return false;
         });
-        if (idx >= 0) return idx;
+        if (idx >= 0) {
+          setActiveIndex(idx);
+        }
       }
     }
-    return initialActiveIndex;
-  });
-  const changeSourceRef = useRef(null);
-  const rand = useRef(createPRNG(1337)).current;
-  const noise = useCallback((n = 1) => n / 2 - rand() * n, [rand]);
+  }, [items]);
 
   const getXY = useCallback((distance, pointIndex, totalPoints) => {
     const angle = ((360 + noise(8)) / totalPoints) * pointIndex * (Math.PI / 180);
