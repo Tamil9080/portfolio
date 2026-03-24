@@ -17,7 +17,7 @@ import SpiderScroll from '../components/SpiderScroll';
 export default function Home() {
   return (
     <div className="w-full bg-black text-white selection:bg-cyan-500/40 font-sans">
-      <ClickSpark sparkColor="#ffffff" sparkSize={12} sparkRadius={20} sparkCount={10} duration={500} easing="ease-out" extraScale={1.2} />
+      <ClickSpark sparkColor="#ffffff" sparkRadius={20} sparkCount={10} duration={500} easing="ease-out" />
       <Background />
       <Scene3D />
       <GrandEntranceClient />

@@ -3,12 +3,10 @@ import React, { useEffect, useRef, useState, ReactNode } from "react";
 
 interface ClickSparkProps {
   sparkColor?: string;
-  sparkSize?: number; // px
   sparkRadius?: number; // px distance
   sparkCount?: number;
   duration?: number; // ms
   easing?: string;
-  extraScale?: number; // multiplier for ending scale
   children?: ReactNode;
 }
 
@@ -20,12 +18,10 @@ interface Burst {
 
 const ClickSpark: React.FC<ClickSparkProps> = ({
   sparkColor = "#ffffff",
-  sparkSize = 8,
   sparkRadius = 50,
   sparkCount = 8,
   duration = 400,
   easing = "cubic-bezier(0.25, 0.46, 0.45, 0.94)",
-  extraScale = 1,
   children,
 }) => {
   const [bursts, setBursts] = useState<Burst[]>([]);
