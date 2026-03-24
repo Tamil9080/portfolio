@@ -9,6 +9,7 @@ import Achievements from '../components/Achievements';
 import Contact from '../components/Contact';
 import Footer from '../components/Footer';
 import Background from '../components/Background';
+import Scene3D from '../components/Scene3D';
 import GrandEntranceClient from '../components/GrandEntranceClient';
 import ClickSpark from '../components/ClickSpark';
 import SpiderScroll from '../components/SpiderScroll';
@@ -18,6 +19,7 @@ export default function Home() {
     <div className="w-full bg-black text-white selection:bg-cyan-500/40 font-sans">
       <ClickSpark sparkColor="#00ffff" sparkSize={12} sparkRadius={20} sparkCount={10} duration={500} easing="ease-out" extraScale={1.2} />
       <Background />
+      <Scene3D />
       <GrandEntranceClient />
       <SpiderScroll />
 

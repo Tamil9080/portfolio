@@ -71,12 +71,13 @@ export default function Hero() {
               margin-top: 2rem;
               position: relative;
               padding: 0.75rem 2rem;
-              background: rgba(0, 0, 0, 0.2);
+              background: rgba(0, 0, 0, 0.4);
               border-radius: 12px;
-              border: 1px solid rgba(255, 255, 255, 0.05);
+              border: 1px solid rgba(0, 255, 255, 0.2);
               backdrop-filter: blur(10px);
               box-shadow: 0 10px 30px -10px rgba(0,0,0,0.5);
               animation: subtleFloat 4s ease-in-out infinite;
+              overflow: hidden;
             }
 
             .high-quality-title {
@@ -86,23 +87,22 @@ export default function Hero() {
               color: #fff;
               letter-spacing: 0.15em;
               text-transform: uppercase;
-              background: linear-gradient(135deg, #fff 0%, #94a3b8 100%);
+              background: linear-gradient(135deg, #fff 0%, #00ffff 100%);
               -webkit-background-clip: text;
               -webkit-text-fill-color: transparent;
             }
 
             .spider-accent {
               position: absolute;
-              bottom: -1px;
-              left: 50%;
-              transform: translateX(-50%);
-              width: 40px;
+              bottom: 0;
+              left: 0;
+              width: 100%;
               height: 2px;
-              background: linear-gradient(90deg, transparent, #E62429, #0066FF, transparent);
+              background: linear-gradient(90deg, transparent, #E62429, #00ffff, transparent);
             }
           `}</style>
           <span className="greeting-text">Incoming Transmission</span>
-          <h2 className="high-quality-name">
+          <h2 className="high-quality-name hover:scale-105 transition-transform duration-300">
             TAMILSELVAN
           </h2>
         </div>
