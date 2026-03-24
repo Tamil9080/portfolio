@@ -1,9 +1,5 @@
 :root {
   --linear-ease: cubic-bezier(0.34, 1.56, 0.64, 1);
-  --color-1: #E62429;
-  --color-2: #00ffff;
-  --color-3: #0066FF;
-  --color-4: #ffffff;
 }
 
 .gooey-nav-container {

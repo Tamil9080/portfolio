@@ -6,7 +6,7 @@ import { useRef, useMemo } from 'react';
 import * as THREE from 'three';
 
 function WebSphere() {
-  const meshRef = useRef<THREE.Mesh>(null);
+  const meshRef = useRef<THREE.Mesh | null>(null);
   
   useFrame((state) => {
     if (!meshRef.current) return;
@@ -28,7 +28,7 @@ function WebSphere() {
 }
 
 function ShatteredDimensions() {
-  const groupRef = useRef<THREE.Group>(null);
+  const groupRef = useRef<THREE.Group | null>(null);
 
   useFrame((state) => {
     if (!groupRef.current) return;
@@ -84,14 +84,19 @@ function ShatteredDimensions() {
 // Colored Particle Fields representing floating dimension dust / multiverse sparks
 function MultiverseDust({ count, color, speedScale = 1 }: { count: number; color: string; speedScale?: number }) {
   const positions = useMemo(() => {
+    const pseudoRandom = (seed: number) => {
+      const x = Math.sin(seed) * 10000;
+      return x - Math.floor(x);
+    };
+
     const pos = new Float32Array(count * 3);
     for (let i = 0; i < count * 3; i++) {
-      pos[i] = (Math.random() - 0.5) * 20; 
+      pos[i] = (pseudoRandom((i + 1) * (count + 1)) - 0.5) * 20;
     }
     return pos;
   }, [count]);
 
-  const pointsRef = useRef<THREE.Points>(null);
+  const pointsRef = useRef<THREE.Points | null>(null);
 
   useFrame((state) => {
     if (pointsRef.current) {

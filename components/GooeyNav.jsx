@@ -29,28 +29,21 @@ const GooeyNav = ({
   const navRef = useRef(null);
   const filterRef = useRef(null);
   const textRef = useRef(null);
-  const [activeIndex, setActiveIndex] = useState(initialActiveIndex);
+  const [activeIndex, setActiveIndex] = useState(() => {
+    if (typeof window === 'undefined' || !Array.isArray(items)) return initialActiveIndex;
+    const hash = window.location.hash;
+    if (!hash) return initialActiveIndex;
+    const idx = items.findIndex(it => {
+      if (!it?.href) return false;
+      if (it.href.startsWith('#')) return it.href === hash;
+      if (it.href.startsWith('/#')) return it.href.substring(1) === hash;
+      return false;
+    });
+    return idx >= 0 ? idx : initialActiveIndex;
+  });
   const changeSourceRef = useRef(null);
   const rand = useRef(createPRNG(1337)).current;
   const noise = useCallback((n = 1) => n / 2 - rand() * n, [rand]);
-
-  // Handle hash-based active index on client only
-  useEffect(() => {
-    if (typeof window !== 'undefined' && Array.isArray(items)) {
-      const hash = window.location.hash;
-      if (hash) {
-        const idx = items.findIndex(it => {
-          if (!it?.href) return false;
-          if (it.href.startsWith('#')) return it.href === hash;
-          if (it.href.startsWith('/#')) return it.href.substring(1) === hash;
-          return false;
-        });
-        if (idx >= 0) {
-          setActiveIndex(idx);
-        }
-      }
-    }
-  }, [items]);
 
   const getXY = useCallback((distance, pointIndex, totalPoints) => {
     const angle = ((360 + noise(8)) / totalPoints) * pointIndex * (Math.PI / 180);

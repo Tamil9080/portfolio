@@ -136,7 +136,7 @@ export default function Contact() {
             
             <h2 className="text-5xl md:text-7xl font-black mb-6 italic font-[Anton] uppercase tracking-normal leading-none drop-shadow-[0_2px_2px_rgba(0,0,0,0.8)]" style={{ WebkitTextStroke: '1.5px black' }}>
               Signal the <span className="contact-glitch-text" data-text="Spider">Spider</span>
-              <FaSpider className="inline-block ml-4 text-red-600 animate-pulse text-4xl md:text-6xl hover:scale-125 transition-transform duration-300 hover:text-cyan-400 cursor-pointer" />
+              <FaSpider className="inline-block ml-4 text-red-600 animate-pulse text-4xl md:text-6xl hover:scale-125 transition-transform duration-300 hover:text-cyan-400" />
             </h2>
             
             <p className="text-gray-400 text-lg max-w-2xl mx-auto font-medium transition-colors hover:text-white">
@@ -189,7 +189,7 @@ export default function Contact() {
               style={{ clipPath: 'polygon(15px 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%, 0 15px)' }}
             >
               {/* Background gradient grid animation */}
-              <div className="absolute inset-0 bg-[linear-gradient(45deg,transparent_25%,rgba(230,36,41,0.1)_50%,transparent_75%,transparent_100%)] bg-[length:10px_10px] animate-[slide_10s_linear_infinite] opacity-0 group-hover/btn:opacity-100 transition-opacity duration-500" />
+              <div className="absolute inset-0 bg-[linear-gradient(45deg,transparent_25%,rgba(230,36,41,0.1)_50%,transparent_75%,transparent_100%)] bg-[length:10px_10px] opacity-0 group-hover/btn:opacity-100 transition-opacity duration-500" />
               
               {/* Animated glowing border edges */}
               <div className="absolute left-0 top-0 bottom-0 w-[3px] bg-cyan-400 group-hover/btn:bg-red-600 transition-colors duration-500 shadow-[0_0_10px_rgba(0,255,255,0.8)] group-hover/btn:shadow-[0_0_15px_rgba(230,36,41,1)]" />
@@ -207,7 +207,7 @@ export default function Contact() {
                 ) : (
                   <>
                     <span className="text-[8px] text-cyan-400/50 group-hover/btn:text-red-500/80 mr-1 transition-colors">[SYS_BOOT]</span>
-                    <FaPaperPlane size={14} className="group-hover/btn:opacity-0 group-hover/btn:translate-x-4 transition-all duration-300 absolute left-[calc(50%-100px)]" />
+                    <FaPaperPlane size={14} className="group-hover/btn:opacity-0 group-hover/btn:translate-x-4 transition-all duration-300 absolute left-[calc(50%_-_100px)]" />
                     <span className="group-hover/btn:tracking-[0.6em] transition-all duration-300 ease-out z-10 relative">Initiate_Transmission</span>
                     {/* Futuristic arrow suffix */}
                     <span className="opacity-0 group-hover/btn:opacity-100 group-hover/btn:translate-x-0 -translate-x-4 transition-all duration-300 text-red-500 font-bold">
