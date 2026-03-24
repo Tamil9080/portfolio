@@ -1,35 +1,35 @@
+
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, useMemo } from 'react';
 
-export function useScrollReveal(options = {}) {
+export function useScrollReveal(options: IntersectionObserverInit = {}) {
   const ref = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
 
-  const defaultOptions = {
+  const mergedOptions = useMemo<IntersectionObserverInit>(() => ({
     threshold: 0.1,
     rootMargin: '0px 0px -50px 0px',
     ...options,
-  };
+  }), [options]);
 
   useEffect(() => {
+    const target = ref.current;
+    if (!target) return;
+
     const observer = new IntersectionObserver(([entry]) => {
       if (entry.isIntersecting) {
         setIsVisible(true);
-        observer.unobserve(entry.target);
+        observer.unobserve(entry.target as Element);
       }
-    }, defaultOptions);
+    }, mergedOptions);
 
-    if (ref.current) {
-      observer.observe(ref.current);
-    }
+    observer.observe(target);
 
     return () => {
-      if (ref.current) {
-        observer.unobserve(ref.current);
-      }
+      observer.unobserve(target);
     };
-  }, [defaultOptions]);
+  }, [mergedOptions]);
 
   return { ref, isVisible };
 }

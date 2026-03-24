@@ -433,7 +433,7 @@
     opacity: 0.4;
   }
 
-  /* Click Spark Particles */
+  /* Click Spark Particles - Spider Theme */
   @keyframes clickSparkParticle {
     0% {
       opacity: 1;
@@ -444,6 +444,51 @@
       transform: translate(-50%, -50%) rotate(var(--angle, 0deg)) translateY(var(--distance, 16px)) scale(var(--endScale, 1));
     }
   }
+
+  @keyframes spiderLeg {
+    0% {
+      stroke-width: 2.5;
+      opacity: 1;
+    }
+    100% {
+      stroke-width: 0.5;
+      opacity: 0;
+    }
+  }
+
+  @keyframes spiderTip {
+    0% {
+      r: 3;
+      opacity: 1;
+    }
+    100% {
+      r: 0.5;
+      opacity: 0;
+    }
+  }
+
+  @keyframes spiderPulse {
+    0% {
+      r: 4;
+      opacity: 1;
+    }
+    100% {
+      r: 2;
+      opacity: 0;
+    }
+  }
+
+  @keyframes spiderWeb {
+    0% {
+      stroke-width: 1.2;
+      opacity: 0.4;
+    }
+    100% {
+      stroke-width: 0.3;
+      opacity: 0;
+    }
+  }
+
   @keyframes scanline {
     0% { transform: translateY(-100%); opacity: 0; }
     50% { opacity: 1; }

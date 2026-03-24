@@ -3,6 +3,15 @@ import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { useMemo, useRef } from 'react';
 import * as THREE from 'three';
 
+// Deterministic PRNG to avoid impure Math.random during render
+function createPRNG(seed = 123456789) {
+  let s = seed >>> 0;
+  return function rand() {
+    s = (Math.imul(1664525, s) + 1013904223) >>> 0;
+    return s / 4294967296;
+  };
+}
+
 const AntigravityInner = ({
   count = 300,
   magnetRadius = 10,
@@ -29,23 +38,24 @@ const AntigravityInner = ({
   const virtualMouse = useRef({ x: 0, y: 0 });
 
   const particles = useMemo(() => {
+    const rand = createPRNG(42);
     const temp = [];
     const width = viewport.width || 100;
     const height = viewport.height || 100;
 
     for (let i = 0; i < count; i++) {
-      const t = Math.random() * 100;
-      const factor = 20 + Math.random() * 100;
-      const speed = 0.01 + Math.random() / 200;
-      const xFactor = -50 + Math.random() * 100;
-      const yFactor = -50 + Math.random() * 100;
-      const zFactor = -50 + Math.random() * 100;
+      const t = rand() * 100;
+      const factor = 20 + rand() * 100;
+      const speed = 0.01 + rand() / 200;
+      const xFactor = -50 + rand() * 100;
+      const yFactor = -50 + rand() * 100;
+      const zFactor = -50 + rand() * 100;
 
-      const x = (Math.random() - 0.5) * width;
-      const y = (Math.random() - 0.5) * height;
-      const z = (Math.random() - 0.5) * 20;
+      const x = (rand() - 0.5) * width;
+      const y = (rand() - 0.5) * height;
+      const z = (rand() - 0.5) * 20;
 
-      const randomRadiusOffset = (Math.random() - 0.5) * 2;
+      const randomRadiusOffset = (rand() - 0.5) * 2;
 
       temp.push({
         t,
