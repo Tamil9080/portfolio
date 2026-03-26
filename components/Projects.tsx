@@ -43,7 +43,7 @@ const projects = [
     color: "group-hover:text-green-500",
     border: "border-green-600/30",
     github: "https://github.com/Tamil9080/pdf-atelier",
-    live: "https://pdf-atelier.vercel.app//"
+    live: "https://pdfatelier.vercel.app/"
   },
   {
     title: "Quick Pick",
